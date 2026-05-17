@@ -70,26 +70,30 @@ export function Hero() {
           color: "var(--paper)",
         }}
       >
-        <span style={{ display: "block" }}>
-          I Build Modern <span style={{ color: "var(--sage)" }}>Websites</span>
+        <span style={{ display: "block", overflow: "hidden" }}>
+          <span style={{ display: "block", animation: "heroLineUp 900ms cubic-bezier(0.22,1,0.36,1) 200ms both" }}>
+            I Build Modern <span style={{ color: "var(--sage)" }}>Websites</span>
+          </span>
         </span>
-        <span style={{ display: "block", textAlign: "right" }}>
-          That{" "}
-          <span style={{ position: "relative", display: "inline-block" }}>
-            Work
-            <span
-              aria-hidden="true"
-              style={{
-                position: "absolute",
-                left: 0,
-                right: 0,
-                bottom: "-6px",
-                height: 5,
-                background: "var(--sage)",
-                transformOrigin: "left",
-                animation: "underlineExpand 800ms var(--ease-out) 1.2s both",
-              }}
-            />
+        <span style={{ display: "block", overflow: "hidden", textAlign: "right" }}>
+          <span style={{ display: "block", animation: "heroLineUp 900ms cubic-bezier(0.22,1,0.36,1) 380ms both" }}>
+            That{" "}
+            <span style={{ position: "relative", display: "inline-block" }}>
+              Work
+              <span
+                aria-hidden="true"
+                style={{
+                  position: "absolute",
+                  left: 0,
+                  right: 0,
+                  bottom: "-6px",
+                  height: 5,
+                  background: "var(--sage)",
+                  transformOrigin: "left",
+                  animation: "underlineExpand 900ms cubic-bezier(0.22,1,0.36,1) 1400ms both",
+                }}
+              />
+            </span>
           </span>
         </span>
       </h1>

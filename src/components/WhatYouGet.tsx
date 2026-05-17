@@ -1,4 +1,5 @@
 import { Plus } from "./icons";
+import { Reveal } from "./Reveal";
 
 export function WhatYouGet() {
   return (
@@ -33,20 +34,22 @@ export function WhatYouGet() {
           color: "var(--ink)",
         }}
       >
-        <span style={{ display: "block" }}>What You Get</span>
-        <span style={{ display: "block" }}>When Clarity</span>
-        <span style={{ display: "block" }}>
-          Meets{" "}
-          <span
-            style={{
-              fontFamily: "var(--font-thunder-hc)",
-              fontStyle: "italic",
-              display: "inline-block",
-            }}
-          >
-            Performance.
+        <Reveal as="span" line style={{ display: "block" }}><span>What You Get</span></Reveal>
+        <Reveal as="span" line delay={120} style={{ display: "block" }}><span>When Clarity</span></Reveal>
+        <Reveal as="span" line delay={240} style={{ display: "block" }}>
+          <span>
+            Meets{" "}
+            <span
+              style={{
+                fontFamily: "var(--font-thunder-hc)",
+                fontStyle: "italic",
+                display: "inline-block",
+              }}
+            >
+              Performance.
+            </span>
           </span>
-        </span>
+        </Reveal>
       </h2>
     </section>
   );

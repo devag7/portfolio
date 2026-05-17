@@ -1,3 +1,5 @@
+import { Reveal } from "./Reveal";
+
 export function CtaSection() {
   return (
     <section
@@ -16,7 +18,7 @@ export function CtaSection() {
         textAlign: "center",
       }}
     >
-      <h2
+      <Reveal as="h2"
         style={{
           margin: 0,
           fontFamily: "var(--font-thunder-lc)",
@@ -30,7 +32,7 @@ export function CtaSection() {
         Ready to Build Something
         <br />
         That Actually Works?
-      </h2>
+      </Reveal>
       <p style={{ margin: 0, maxWidth: 540, fontFamily: "var(--font-nohemi)", fontSize: 16, lineHeight: 1.6, color: "rgba(33,33,33,0.7)" }}>
         Clear design, solid engineering, and focused strategy — working together as one system.
       </p>

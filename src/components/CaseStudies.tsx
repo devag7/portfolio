@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { ArrowUpRight } from "./icons";
+import { Reveal } from "./Reveal";
 
 const SLABS = [
   {
@@ -59,7 +60,7 @@ export function CaseStudies() {
             marginTop: i === 0 ? 0 : "-3vh",
           }}
         >
-          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+          <Reveal as="div" style={{ display: "flex", flexDirection: "column", gap: 24 }}>
             <span style={{ fontFamily: "var(--font-nohemi)", fontSize: 13, opacity: 0.7 }}>{s.num}</span>
             <p style={{ margin: 0, fontFamily: "var(--font-nohemi)", fontSize: 16, lineHeight: 1.55, maxWidth: 520, color: s.fg }}>
               {s.body}
@@ -94,8 +95,8 @@ export function CaseStudies() {
             >
               Learn more <ArrowUpRight />
             </a>
-          </div>
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 12 }}>
+          </Reveal>
+          <Reveal as="div" delay={150} style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 12 }}>
             <span style={{ fontFamily: "var(--font-nohemi)", fontSize: 13, opacity: 0.7 }}>{s.caption}</span>
             <Image
               src={s.image}
@@ -104,7 +105,7 @@ export function CaseStudies() {
               height={300}
               style={{ width: "clamp(280px, 32vw, 420px)", height: "auto", boxShadow: "0 12px 40px rgba(0,0,0,0.18)" }}
             />
-          </div>
+          </Reveal>
         </article>
       ))}
     </section>

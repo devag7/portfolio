@@ -53,7 +53,36 @@ body.menu-open { overflow: hidden; }
 a { color: inherit; text-decoration: none; }
 button { background: none; border: 0; color: inherit; cursor: pointer; font: inherit; padding: 0; }
 
+a, button, input, textarea, [tabindex] { outline: 0; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--sage);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Footer + menu social link hit area (WCAG 2.5.5) */
+footer a, [role="dialog"] a { padding: 8px 0; display: inline-block; min-height: 44px; line-height: 1.6; }
+
+/* Skip link */
+.skip-link {
+  position: absolute; top: -100px; left: 16px; z-index: 99999;
+  background: var(--sage); color: var(--ink); padding: 12px 20px;
+  font-family: var(--font-nohemi); font-weight: 600; font-size: 14px;
+  text-transform: uppercase; letter-spacing: 0.04em; border-radius: 9999px;
+  transition: top 200ms ease-out;
+}
+.skip-link:focus { top: 16px; }
+
 ::selection { background: var(--sage); color: var(--ink); }
+
+/* ============================================================
+   Scroll reveal entrance animations
+   ============================================================ */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
+.reveal.in-view { opacity: 1; transform: translateY(0); }
+.reveal-line { display: block; overflow: hidden; }
+.reveal-line > * { display: block; transform: translateY(110%); transition: transform 800ms var(--ease-out); }
+.reveal-line.in-view > * { transform: translateY(0); }
 
 /* ============================================================
    Vertical column grid (12-col faint lines, fixed behind content)
@@ -109,6 +138,11 @@ html.lenis body { height: auto; }
 @keyframes spin360 { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @keyframes underlineExpand { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes fadeUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes heroLineUp { from { transform: translateY(110%); } to { transform: translateY(0); } }
+@keyframes parallaxNum {
+  from { transform: translate(0, -50%); opacity: 0; }
+  to { transform: translate(0, -50%); opacity: 1; }
+}
 
 .container {
   width: 100%;

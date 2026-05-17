@@ -68,6 +68,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`lenis ${thunderLC.variable} ${thunderHC.variable} ${nohemi.variable}`}>
       <body>
+        <a href="#top" className="skip-link">Skip to content</a>
         <LenisProvider>
           <div className="col-grid" aria-hidden="true" />
           <Preloader />
