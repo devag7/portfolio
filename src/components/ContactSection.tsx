@@ -49,23 +49,8 @@ export function ContactSection() {
           <button
             type="submit"
             data-cursor="hover"
-            style={{
-              alignSelf: "flex-start",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 12,
-              padding: "16px 32px",
-              background: "var(--paper)",
-              color: "var(--ink)",
-              borderRadius: 9999,
-              fontFamily: "var(--font-nohemi)",
-              fontWeight: 600,
-              fontSize: 14,
-              textTransform: "uppercase",
-              letterSpacing: "0.04em",
-              cursor: "pointer",
-              transition: "background 200ms var(--ease-out), color 200ms var(--ease-out), transform 200ms var(--ease-out)",
-            }}
+            className="pill pill--paper"
+            style={{ alignSelf: "flex-start" }}
           >
             Send Message <ArrowUpRight />
           </button>

@@ -27,19 +27,21 @@ export function ProjectsGallery() {
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="hover"
+            className="row-hover"
             style={{
               display: "grid",
               gridTemplateColumns: "2fr 1fr 2.5fr 1fr",
               alignItems: "center",
-              padding: "32px 0",
+              padding: "32px var(--gutter)",
+              marginLeft: "calc(-1 * var(--gutter))",
+              marginRight: "calc(-1 * var(--gutter))",
               borderBottom: "1px solid rgba(33,33,33,0.18)",
               color: "var(--ink)",
-              transition: "background 200ms",
             }}
           >
             <span style={{ display: "flex", alignItems: "baseline", gap: 16 }}>
               <span style={{ fontFamily: "var(--font-nohemi)", fontSize: 13, opacity: 0.6 }}>{p.idx}</span>
-              <span style={{ fontFamily: "var(--font-thunder-lc)", fontWeight: 800, fontSize: 40, textTransform: "uppercase", letterSpacing: "-0.01em" }}>{p.name}</span>
+              <span data-row-name style={{ fontFamily: "var(--font-thunder-lc)", fontWeight: 800, fontSize: 40, textTransform: "uppercase", letterSpacing: "-0.01em" }}>{p.name}</span>
             </span>
             <span style={{ fontFamily: "var(--font-nohemi)", fontSize: 14, opacity: 0.7 }}>{p.year}</span>
             <span style={{ fontFamily: "var(--font-nohemi)", fontSize: 14, opacity: 0.7 }}>{p.cat}</span>

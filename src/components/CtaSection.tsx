@@ -40,41 +40,16 @@ export function CtaSection() {
         <a
           href="#contact"
           data-cursor="hover"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            padding: "18px 40px",
-            background: "var(--paper-soft)",
-            color: "var(--ink)",
-            fontFamily: "var(--font-nohemi)",
-            fontWeight: 600,
-            fontSize: 14,
-            textTransform: "uppercase",
-            letterSpacing: "0.04em",
-            borderRadius: 9999,
-            transition: "background 200ms var(--ease-out), transform 200ms var(--ease-out)",
-          }}
+          className="pill pill--ink"
+          style={{ padding: "18px 40px", fontSize: 14 }}
         >
           Let&apos;s Talk
         </a>
         <a
           href="mailto:devagarwalla2016@gmail.com?subject=Project%20inquiry"
           data-cursor="hover"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            padding: "18px 40px",
-            background: "transparent",
-            color: "var(--ink)",
-            border: "1.5px solid var(--ink)",
-            fontFamily: "var(--font-nohemi)",
-            fontWeight: 600,
-            fontSize: 14,
-            textTransform: "uppercase",
-            letterSpacing: "0.04em",
-            borderRadius: 9999,
-            transition: "background 200ms var(--ease-out), color 200ms var(--ease-out)",
-          }}
+          className="pill pill--ghost"
+          style={{ padding: "18px 40px", fontSize: 14, borderWidth: "1.5px" }}
         >
           Email Me Directly
         </a>

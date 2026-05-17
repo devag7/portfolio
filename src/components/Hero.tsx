@@ -1,25 +1,51 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { WavesCanvas } from "./WavesCanvas";
 import { ArrowUpRight } from "./icons";
 
 function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   const [v, setV] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+
   useEffect(() => {
-    const start = performance.now();
-    const dur = 1400;
+    const el = ref.current;
+    if (!el) return;
     let raf = 0;
-    const tick = (t: number) => {
-      const p = Math.min((t - start) / dur, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
-      setV(Math.floor(eased * to));
-      if (p < 1) raf = requestAnimationFrame(tick);
+
+    const run = () => {
+      cancelAnimationFrame(raf);
+      const start = performance.now();
+      const dur = 1400;
+      const tick = (t: number) => {
+        const p = Math.min((t - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        setV(Math.floor(eased * to));
+        if (p < 1) raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
     };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setV(0);
+          run();
+        } else {
+          cancelAnimationFrame(raf);
+        }
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(el);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      io.disconnect();
+    };
   }, [to]);
-  return <>{v}{suffix}</>;
+
+  return <span ref={ref}>{v}{suffix}</span>;
 }
 
 export function Hero() {
@@ -29,13 +55,14 @@ export function Hero() {
       data-bg="dark"
       style={{
         position: "relative",
-        minHeight: "100vh",
-        padding: "112px var(--gutter) 64px",
+        minHeight: "100svh",
+        padding: "96px var(--gutter) 48px",
         background: "var(--ink)",
         color: "var(--paper)",
         overflow: "hidden",
-        display: "flex",
-        flexDirection: "column",
+        display: "grid",
+        gridTemplateRows: "auto 1fr auto",
+        rowGap: 32,
       }}
     >
       <WavesCanvas />
@@ -66,11 +93,12 @@ export function Hero() {
         style={{
           position: "relative",
           zIndex: 1,
-          margin: "auto 0",
-          padding: "32px 0",
+          margin: 0,
+          alignSelf: "center",
+          padding: "8px 0",
           fontFamily: "var(--font-thunder-lc)",
           fontWeight: 900,
-          fontSize: "clamp(56px, 13vw, 200px)",
+          fontSize: "clamp(48px, 12vw, 196px)",
           lineHeight: 0.9,
           letterSpacing: "-0.01em",
           textTransform: "uppercase",
@@ -112,9 +140,9 @@ export function Hero() {
           zIndex: 1,
           display: "grid",
           gridTemplateColumns: "auto minmax(280px, 460px)",
+          justifyContent: "space-between",
           alignItems: "start",
           gap: 24,
-          marginTop: 24,
         }}
       >
         <p
@@ -156,21 +184,7 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="hover"
-              className="arrow-link"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 6,
-                padding: "10px 20px",
-                background: "var(--sage)",
-                color: "var(--ink)",
-                fontFamily: "var(--font-nohemi)",
-                fontWeight: 600,
-                fontSize: 13,
-                textTransform: "uppercase",
-                letterSpacing: "0.04em",
-                borderRadius: 9999,
-              }}
+              className="pill pill--sage"
             >
               View Résumé <ArrowUpRight />
             </a>
