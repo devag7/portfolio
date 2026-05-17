@@ -101,11 +101,14 @@ export function Header() {
           transition: "background 220ms var(--ease-out), color 220ms var(--ease-out)",
         }}
       >
-        <span className="hamburger" aria-hidden="true">
-          <span className="hamburger-bar" data-pos="top" />
-          <span className="hamburger-bar" data-pos="bottom" />
+        <span className="menu-icon" aria-hidden="true">
+          <span className="menu-icon-dot" />
+          <span className="menu-icon-bars">
+            <span className="menu-icon-bar" data-pos="top" />
+            <span className="menu-icon-bar" data-pos="bottom" />
+          </span>
         </span>
-        <span className="hamburger-label">{open ? "Close" : "Menu"}</span>
+        <span className="menu-icon-label">{open ? "Close" : "Menu"}</span>
       </button>
     </header>
   );

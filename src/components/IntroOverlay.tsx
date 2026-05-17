@@ -93,21 +93,6 @@ export function IntroOverlay() {
     >
       <div
         style={{
-          display: "flex",
-          justifyContent: "space-between",
-          fontFamily: "var(--font-nohemi)",
-          fontSize: 13,
-          color: "rgba(253,253,253,0.55)",
-          textTransform: "uppercase",
-          letterSpacing: "0.06em",
-          marginBottom: 8,
-        }}
-      >
-        <span>Dev Agarwalla — Portfolio 2026</span>
-        <span>{pct < 100 ? "Loading…" : "Ready"}</span>
-      </div>
-      <div
-        style={{
           alignSelf: "flex-end",
           fontFamily: "var(--font-thunder-lc)",
           fontWeight: 800,

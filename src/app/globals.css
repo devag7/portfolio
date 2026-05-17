@@ -265,16 +265,34 @@ header a, header button { transition: opacity 200ms var(--ease-out), background 
 header a:hover { opacity: 0.7; }
 
 /* ============================================================
-   Hamburger menu icon morph (live chkstepan: 2 bars -> X)
+   Menu icon 3-state morph (live chkstepan)
+   default = sage dot, hover = 2 hamburger bars, open = X close
    ============================================================ */
-.hamburger {
+.menu-icon {
   position: relative;
   display: inline-block;
-  width: 20px;
-  height: 12px;
+  width: 18px;
+  height: 14px;
   flex-shrink: 0;
 }
-.hamburger-bar {
+.menu-icon-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sage);
+  transform: translate(-50%, -50%) scale(1);
+  transition: opacity 200ms var(--ease-out), transform 320ms var(--ease-snap);
+}
+.menu-icon-bars {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 220ms var(--ease-out);
+}
+.menu-icon-bar {
   position: absolute;
   left: 0;
   right: 0;
@@ -284,13 +302,20 @@ header a:hover { opacity: 0.7; }
   transform-origin: center;
   transition: transform 360ms var(--ease-snap), top 320ms var(--ease-snap), bottom 320ms var(--ease-snap);
 }
-.hamburger-bar[data-pos="top"] { top: 2px; }
-.hamburger-bar[data-pos="bottom"] { bottom: 2px; }
-.menu-toggle[aria-expanded="true"] .hamburger-bar[data-pos="top"] {
+.menu-icon-bar[data-pos="top"] { top: 3px; }
+.menu-icon-bar[data-pos="bottom"] { bottom: 3px; }
+.menu-toggle:hover .menu-icon-dot {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.4);
+}
+.menu-toggle:hover .menu-icon-bars { opacity: 1; }
+.menu-toggle[aria-expanded="true"] .menu-icon-dot { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
+.menu-toggle[aria-expanded="true"] .menu-icon-bars { opacity: 1; }
+.menu-toggle[aria-expanded="true"] .menu-icon-bar[data-pos="top"] {
   top: 50%;
   transform: translateY(-50%) rotate(45deg);
 }
-.menu-toggle[aria-expanded="true"] .hamburger-bar[data-pos="bottom"] {
+.menu-toggle[aria-expanded="true"] .menu-icon-bar[data-pos="bottom"] {
   bottom: 50%;
   transform: translateY(50%) rotate(-45deg);
 }
