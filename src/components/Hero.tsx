@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { WavesCanvas } from "./WavesCanvas";
 import { ArrowUpRight } from "./icons";
 
 const ThreeMoon = dynamic(() => import("./ThreeMoon"), {
@@ -13,7 +14,7 @@ const ThreeMoon = dynamic(() => import("./ThreeMoon"), {
         height: "100%",
         borderRadius: "50%",
         background:
-          "radial-gradient(circle at 35% 35%, rgba(253,253,253,0.35) 0%, rgba(33,33,33,0.95) 55%, rgba(33,33,33,1) 80%)",
+          "radial-gradient(circle at 35% 35%, rgba(253,253,253,0.4) 0%, rgba(33,33,33,0.95) 60%, rgba(33,33,33,1) 80%)",
       }}
     />
   ),
@@ -35,27 +36,7 @@ export function Hero() {
         gridTemplateRows: "1fr auto",
       }}
     >
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          inset: 0,
-          display: "grid",
-          placeItems: "center",
-          zIndex: 0,
-          pointerEvents: "none",
-        }}
-      >
-        <div
-          style={{
-            width: "min(62vh, 62vw)",
-            aspectRatio: "1 / 1",
-            opacity: 0.92,
-          }}
-        >
-          <ThreeMoon />
-        </div>
-      </div>
+      <WavesCanvas />
 
       <h1
         className="hero-headline"
@@ -71,7 +52,6 @@ export function Hero() {
           letterSpacing: "-0.01em",
           textTransform: "uppercase",
           color: "var(--paper)",
-          textShadow: "0 4px 30px rgba(0,0,0,0.35)",
         }}
       >
         <span style={{ display: "block", overflow: "hidden", textAlign: "left" }}>
@@ -94,8 +74,8 @@ export function Hero() {
         style={{
           position: "relative",
           zIndex: 1,
-          display: "flex",
-          justifyContent: "space-between",
+          display: "grid",
+          gridTemplateColumns: "1fr auto 1fr",
           alignItems: "end",
           gap: 24,
           fontFamily: "var(--font-nohemi)",
@@ -110,6 +90,7 @@ export function Hero() {
           data-cursor="hover"
           className="arrow-link"
           style={{
+            justifySelf: "start",
             display: "inline-flex",
             alignItems: "center",
             gap: 6,
@@ -122,7 +103,20 @@ export function Hero() {
         >
           Scroll <ArrowUpRight />
         </a>
-        <span>Bengaluru, India · 2026</span>
+
+        <div
+          aria-hidden="true"
+          style={{
+            justifySelf: "center",
+            width: 88,
+            aspectRatio: "1 / 1",
+            opacity: 0.95,
+          }}
+        >
+          <ThreeMoon />
+        </div>
+
+        <span style={{ justifySelf: "end" }}>Bengaluru, India · 2026</span>
       </div>
     </section>
   );
