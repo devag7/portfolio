@@ -131,8 +131,7 @@ html.lenis body { height: auto; }
    Animations
    ============================================================ */
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@keyframes moonFadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes moonSpin { from { transform: translateX(-50%) rotate(0deg); } to { transform: translateX(-50%) rotate(360deg); } }
+@keyframes moonFadeIn { from { opacity: 0; transform: translateX(-50%) scale(0.92); } to { opacity: 1; transform: translateX(-50%) scale(1); } }
 @keyframes badgeSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
 /* Menu hover marquee reveal (default is inline on .menu-marquee; override on hover) */

@@ -6,7 +6,6 @@ import { IntroOverlay } from "@/components/IntroOverlay";
 import { GlobalMoon } from "@/components/GlobalMoon";
 import { Cursor } from "@/components/Cursor";
 import { Header } from "@/components/Header";
-import { AwwardsBadge } from "@/components/AwwardsBadge";
 import { MenuOverlay } from "@/components/MenuOverlay";
 
 const thunderLC = localFont({
@@ -76,7 +75,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <GlobalMoon />
           <Cursor />
           <Header />
-          <AwwardsBadge />
           <MenuOverlay />
           {children}
         </LenisProvider>
