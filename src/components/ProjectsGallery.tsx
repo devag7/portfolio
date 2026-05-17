@@ -1,4 +1,5 @@
 import { ArrowUpRight } from "./icons";
+import { Reveal } from "./Reveal";
 
 const PROJECTS = [
   { idx: "01", name: "Pastyy", year: "2025", cat: "MERN · JWT · Google OAuth · Cloud Drive", href: "https://pastyy.run.place/" },
@@ -16,9 +17,12 @@ export function ProjectsGallery() {
       </div>
 
       <div style={{ borderTop: "1px solid rgba(33,33,33,0.18)" }}>
-        {PROJECTS.map((p) => (
-          <a
+        {PROJECTS.map((p, i) => (
+          <Reveal
+            as="a"
+            delay={i * 100}
             key={p.idx}
+            // @ts-expect-error anchor passthrough
             href={p.href}
             target="_blank"
             rel="noopener noreferrer"
@@ -42,7 +46,7 @@ export function ProjectsGallery() {
             <span style={{ justifySelf: "end", display: "inline-flex", alignItems: "center", gap: 6, fontFamily: "var(--font-nohemi)", fontWeight: 500, fontSize: 14 }}>
               See live <ArrowUpRight />
             </span>
-          </a>
+          </Reveal>
         ))}
       </div>
 

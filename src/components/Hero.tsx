@@ -75,7 +75,7 @@ export function Hero() {
             I Build Modern <span style={{ color: "var(--sage)" }}>Websites</span>
           </span>
         </span>
-        <span style={{ display: "block", overflow: "hidden", textAlign: "right" }}>
+        <span style={{ display: "block", overflow: "hidden", textAlign: "center" }}>
           <span style={{ display: "block", animation: "heroLineUp 900ms cubic-bezier(0.22,1,0.36,1) 380ms both" }}>
             That{" "}
             <span style={{ position: "relative", display: "inline-block" }}>

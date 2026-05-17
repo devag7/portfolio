@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useLocalTimeIST } from "@/lib/clock";
+import { Reveal } from "./Reveal";
 
 export function Footer() {
   const time = useLocalTimeIST();
@@ -30,26 +31,28 @@ export function Footer() {
         </div>
       </div>
 
-      <h2
-        aria-hidden="true"
-        style={{
-          margin: 0,
-          padding: "0 4px",
-          textAlign: "center",
-          fontFamily: "var(--font-thunder-lc)",
-          fontWeight: 900,
-          fontSize: "clamp(96px, 23vw, 360px)",
-          lineHeight: 0.86,
-          letterSpacing: "-0.025em",
-          textTransform: "uppercase",
-          color: "var(--paper)",
-          transform: "translateY(3vh)",
-          overflow: "visible",
-          whiteSpace: "nowrap",
-        }}
-      >
-        DEVAGARWALLA
-      </h2>
+      <Reveal as="div" rootMargin="-5% 0px" style={{ display: "block" }}>
+        <h2
+          aria-hidden="true"
+          style={{
+            margin: 0,
+            padding: "0 4px",
+            textAlign: "center",
+            fontFamily: "var(--font-thunder-lc)",
+            fontWeight: 900,
+            fontSize: "clamp(96px, 23vw, 360px)",
+            lineHeight: 0.86,
+            letterSpacing: "-0.025em",
+            textTransform: "uppercase",
+            color: "var(--paper)",
+            transform: "translateY(3vh)",
+            overflow: "visible",
+            whiteSpace: "nowrap",
+          }}
+        >
+          DEVAGARWALLA
+        </h2>
+      </Reveal>
       <span className="sr-only" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0,0,0,0)" }}>
         Dev Agarwalla
       </span>

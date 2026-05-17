@@ -3,6 +3,7 @@
 import { FormEvent } from "react";
 import { ArrowUpRight } from "./icons";
 import { useLocalTimeIST } from "@/lib/clock";
+import { Reveal } from "./Reveal";
 
 function handleMailto(e: FormEvent<HTMLFormElement>) {
   e.preventDefault();
@@ -20,9 +21,9 @@ export function ContactSection() {
   return (
     <section id="contact" data-bg="dark" style={{ background: "var(--ink)", color: "var(--paper)", padding: "clamp(96px, 12vh, 160px) var(--gutter)" }}>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, marginBottom: 80, alignItems: "end" }}>
-        <h2 style={{ margin: 0, fontFamily: "var(--font-thunder-lc)", fontWeight: 900, fontSize: "clamp(72px, 16vw, 220px)", lineHeight: 0.9, textTransform: "uppercase" }}>
-          Let&apos;s<br />Talk.
-        </h2>
+        <Reveal as="h2" line style={{ margin: 0, fontFamily: "var(--font-thunder-lc)", fontWeight: 900, fontSize: "clamp(72px, 16vw, 220px)", lineHeight: 0.9, textTransform: "uppercase" }}>
+          <span>Let&apos;s Talk.</span>
+        </Reveal>
         <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           {[
             { k: "Email", v: <a href="mailto:devagarwalla2016@gmail.com" style={{ color: "var(--sage)", textDecoration: "underline", textUnderlineOffset: 4 }}>devagarwalla2016@gmail.com</a> },

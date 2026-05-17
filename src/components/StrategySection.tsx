@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowUpRight } from "./icons";
+import { Reveal } from "./Reveal";
 
 const STRIPES = [
   { num: "01", title: "Performance First", body: "I focus on building web apps that load fast and feel smooth from the first interaction. Performance is considered at every stage, from structure and assets to code quality and optimization, ensuring reliable results on real devices and networks.", link: "Learn more", bg: "var(--paper-soft)" },
@@ -68,7 +69,7 @@ function Stripe({ num, title, body, link, bg, idx }: StripeProps) {
         overflow: "hidden",
       }}
     >
-      <h3
+      <Reveal as="h3"
         style={{
           margin: 0,
           fontFamily: "var(--font-thunder-lc)",
@@ -80,13 +81,17 @@ function Stripe({ num, title, body, link, bg, idx }: StripeProps) {
         }}
       >
         {title}
-      </h3>
-      <p style={{ maxWidth: 560, margin: "16px auto 0", textAlign: "center", fontFamily: "var(--font-nohemi)", fontSize: 16, lineHeight: 1.55, color: ink }}>
+      </Reveal>
+      <Reveal as="p" delay={80} style={{ maxWidth: 560, margin: "16px auto 0", textAlign: "center", fontFamily: "var(--font-nohemi)", fontSize: 16, lineHeight: 1.55, color: ink }}>
         {body}
-      </p>
-      <a href="#projects" data-cursor="hover" style={{ marginTop: 16, alignSelf: "center", display: "inline-flex", alignItems: "center", gap: 6, fontFamily: "var(--font-nohemi)", fontWeight: 500, fontSize: 14, color: ink }}>
+      </Reveal>
+      <Reveal as="a" delay={160}
+        // @ts-expect-error custom anchor
+        href="#projects" data-cursor="hover"
+        style={{ marginTop: 16, alignSelf: "center", display: "inline-flex", alignItems: "center", gap: 6, fontFamily: "var(--font-nohemi)", fontWeight: 500, fontSize: 14, color: ink }}
+      >
         {link} <ArrowUpRight />
-      </a>
+      </Reveal>
       <span
         aria-hidden="true"
         style={{
@@ -112,11 +117,12 @@ function Stripe({ num, title, body, link, bg, idx }: StripeProps) {
 export function StrategySection() {
   return (
     <section id="approach" data-bg="dark" style={{ background: "var(--ink)", color: "var(--paper)", position: "relative" }}>
-      <div style={{ padding: "120px var(--gutter) 80px", display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 32, flexWrap: "wrap" }}>
+      <div style={{ padding: "180px var(--gutter) 140px", display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 32, flexWrap: "wrap", maxWidth: "var(--page-max)", margin: "0 auto" }}>
         <div>
-          <p style={{ fontFamily: "var(--font-nohemi)", fontWeight: 200, fontSize: 11.65, margin: "0 0 16px" }}>Approach</p>
-          <h2 style={{ margin: 0, fontFamily: "var(--font-thunder-lc)", fontWeight: 900, fontSize: "clamp(56px, 9vw, 130px)", lineHeight: 0.92, textTransform: "uppercase", color: "var(--paper)" }}>
-            How I Approach<br />Every Project?
+          <p style={{ fontFamily: "var(--font-nohemi)", fontWeight: 200, fontSize: 11.65, margin: "0 0 24px", textTransform: "lowercase" }}>strategy</p>
+          <h2 style={{ margin: 0, fontFamily: "var(--font-thunder-lc)", fontWeight: 900, fontSize: "clamp(48px, 6.5vw, 96px)", lineHeight: 0.95, textTransform: "uppercase", color: "var(--paper)", letterSpacing: "-0.01em" }}>
+            <span style={{ display: "block" }}>How I Approach</span>
+            <span style={{ display: "block", paddingLeft: "1.6em" }}>Every Project?</span>
           </h2>
         </div>
         <div aria-hidden="true" style={{ width: 140, height: 140, position: "relative", animation: "spin360 22s linear infinite", color: "var(--paper)" }}>
