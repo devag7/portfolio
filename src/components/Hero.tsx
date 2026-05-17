@@ -1,8 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import { WavesCanvas } from "./WavesCanvas";
 import { ArrowUpRight } from "./icons";
+
+const ThreeMoon = dynamic(() => import("./ThreeMoon"), {
+  ssr: false,
+  loading: () => null,
+});
 
 function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   const [v, setV] = useState(0);
@@ -47,6 +53,24 @@ export function Hero() {
       }}
     >
       <WavesCanvas />
+
+      <div
+        aria-hidden="true"
+        className="hero-moon"
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "clamp(120px, 13vw, 180px)",
+          aspectRatio: "1 / 1",
+          zIndex: 0,
+          pointerEvents: "none",
+          filter: "drop-shadow(0 8px 24px rgba(0,0,0,0.45))",
+        }}
+      >
+        <ThreeMoon />
+      </div>
 
       <div
         className="hero-stats"
