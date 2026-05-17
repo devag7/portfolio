@@ -131,6 +131,7 @@ html.lenis body { height: auto; }
    Animations
    ============================================================ */
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes moonFadeIn { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: scale(1); } }
 
 /* Menu hover marquee reveal (default is inline on .menu-marquee; override on hover) */
 .menu-item-row:hover .menu-marquee,
@@ -262,3 +263,64 @@ footer a:hover { opacity: 0.6; }
 
 header a, header button { transition: opacity 200ms var(--ease-out), background 200ms var(--ease-out), color 200ms var(--ease-out); }
 header a:hover { opacity: 0.7; }
+
+/* ============================================================
+   Hamburger menu icon morph (live chkstepan: 2 bars -> X)
+   ============================================================ */
+.hamburger {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 12px;
+  flex-shrink: 0;
+}
+.hamburger-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1.6px;
+  background: currentColor;
+  border-radius: 2px;
+  transform-origin: center;
+  transition: transform 360ms var(--ease-snap), top 320ms var(--ease-snap), bottom 320ms var(--ease-snap);
+}
+.hamburger-bar[data-pos="top"] { top: 2px; }
+.hamburger-bar[data-pos="bottom"] { bottom: 2px; }
+.menu-toggle[aria-expanded="true"] .hamburger-bar[data-pos="top"] {
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+}
+.menu-toggle[aria-expanded="true"] .hamburger-bar[data-pos="bottom"] {
+  bottom: 50%;
+  transform: translateY(50%) rotate(-45deg);
+}
+
+/* ============================================================
+   Hero headline reveal — gated on body.intro-done so it fires
+   AFTER the intro mask sweep completes.
+   ============================================================ */
+.hero-headline .hero-line { display: block; transform: translateY(110%); }
+.hero-headline .hero-underline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 5px;
+  background: var(--sage);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+body.intro-done .hero-headline .hero-line {
+  animation: heroLineUp 900ms cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
+}
+body.intro-done .hero-headline .hero-line--late {
+  animation: heroLineUp 900ms cubic-bezier(0.22, 1, 0.36, 1) 320ms both;
+}
+body.intro-done .hero-headline .hero-underline {
+  animation: underlineExpand 900ms cubic-bezier(0.22, 1, 0.36, 1) 1300ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-headline .hero-line { transform: none !important; }
+  .hero-headline .hero-underline { transform: scaleX(1) !important; }
+}

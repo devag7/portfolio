@@ -1,4 +1,5 @@
 import { Hero } from "@/components/Hero";
+import { AboutSection } from "@/components/AboutSection";
 import { StrategySection } from "@/components/StrategySection";
 import { ClarityBanner } from "@/components/ClarityBanner";
 import { WhatYouGet } from "@/components/WhatYouGet";
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <AboutSection />
       <StrategySection />
       <ClarityBanner />
       <WhatYouGet />

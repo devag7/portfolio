@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { LenisProvider } from "@/components/LenisProvider";
-import { Preloader } from "@/components/Preloader";
+import { IntroOverlay } from "@/components/IntroOverlay";
 import { Cursor } from "@/components/Cursor";
 import { Header } from "@/components/Header";
 import { AwwardsBadge } from "@/components/AwwardsBadge";
@@ -71,7 +71,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <a href="#top" className="skip-link">Skip to content</a>
         <LenisProvider>
           <div className="col-grid" aria-hidden="true" />
-          <Preloader />
+          <IntroOverlay />
           <Cursor />
           <Header />
           <AwwardsBadge />

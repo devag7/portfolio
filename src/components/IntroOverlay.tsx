@@ -1,50 +1,79 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { lenisStore } from "@/lib/lenis-store";
 
-export function Preloader() {
+const COUNT_DURATION = 1400;
+const SWEEP_DURATION = 600;
+const TOTAL = COUNT_DURATION + SWEEP_DURATION;
+
+function markDone() {
+  if (typeof document === "undefined") return;
+  document.body.classList.add("intro-done");
+  document.body.style.overflow = "";
+  lenisStore.start();
+}
+
+export function IntroOverlay() {
   const [pct, setPct] = useState(0);
-  const [hidden, setHidden] = useState(false);
+  const [phase, setPhase] = useState<"count" | "sweep" | "done">("count");
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (sessionStorage.getItem("preloader_played") === "1") {
-      setHidden(true);
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const skip = reduced || sessionStorage.getItem("intro_played") === "1";
+
+    if (skip) {
+      setPct(100);
+      setPhase("done");
+      markDone();
       return;
     }
-    sessionStorage.setItem("preloader_played", "1");
+
+    sessionStorage.setItem("intro_played", "1");
     document.body.style.overflow = "hidden";
+    lenisStore.stop();
 
     const start = performance.now();
-    const dur = 2000;
     let rafId = 0;
+
     const tick = (t: number) => {
-      const p = Math.min((t - start) / dur, 1);
+      const elapsed = t - start;
+      const p = Math.min(elapsed / COUNT_DURATION, 1);
       const eased = 1 - Math.pow(1 - p, 3);
       setPct(Math.round(eased * 100));
       if (p < 1) rafId = requestAnimationFrame(tick);
     };
     rafId = requestAnimationFrame(tick);
 
-    const removeAt = setTimeout(() => {
-      setHidden(true);
-      document.body.style.overflow = "";
-    }, 2900);
+    const sweepAt = setTimeout(() => setPhase("sweep"), COUNT_DURATION);
+    const doneAt = setTimeout(() => {
+      setPhase("done");
+      markDone();
+    }, TOTAL);
 
     return () => {
       cancelAnimationFrame(rafId);
-      clearTimeout(removeAt);
+      clearTimeout(sweepAt);
+      clearTimeout(doneAt);
     };
   }, []);
 
-  if (hidden) return null;
+  if (phase === "done") return null;
+
+  const sweeping = phase === "sweep";
 
   return (
     <div
       role="status"
       aria-live="polite"
-      onClick={() => { setHidden(true); document.body.style.overflow = ""; }}
-      className="preloader-root"
+      aria-label="Loading portfolio"
+      onClick={() => {
+        if (pct < 100) return;
+        setPhase("done");
+        markDone();
+      }}
       style={{
         position: "fixed",
         inset: 0,
@@ -54,9 +83,12 @@ export function Preloader() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-end",
-        padding: 24,
+        padding: "24px var(--gutter)",
         cursor: pct === 100 ? "pointer" : "default",
-        animation: "preloaderFade 700ms cubic-bezier(0.22,1,0.36,1) 2.2s forwards",
+        clipPath: sweeping ? "inset(0 0 100% 0)" : "inset(0 0 0 0)",
+        transition: `clip-path ${SWEEP_DURATION}ms var(--ease-snap)`,
+        willChange: "clip-path",
+        pointerEvents: sweeping ? "none" : "auto",
       }}
     >
       <div
@@ -82,11 +114,11 @@ export function Preloader() {
           fontSize: "clamp(96px, 18vw, 200px)",
           lineHeight: 0.85,
           color: "var(--paper)",
+          letterSpacing: "-0.02em",
         }}
       >
         {pct}%
       </div>
-      <style>{`@keyframes preloaderFade { to { opacity: 0; visibility: hidden; pointer-events: none; } }`}</style>
     </div>
   );
 }

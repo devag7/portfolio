@@ -48,3 +48,7 @@ next-env.d.ts
 # Local temp files
 temp/
 pnpm-lock.yaml
+
+# Reference HTML export (local only)
+chkstepan*Overview*
+chkstepan*Overview*_files/

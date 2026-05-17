@@ -83,12 +83,13 @@ export function Header() {
         aria-label={open ? "Close menu" : "Open menu"}
         onClick={() => menuStore.toggle()}
         data-cursor="hover"
+        className="menu-toggle"
         style={{
           pointerEvents: "auto",
           display: "inline-flex",
           alignItems: "center",
           gap: 14,
-          padding: open ? "16px" : "14px 26px",
+          padding: "14px 22px 14px 18px",
           background: open ? "var(--sage)" : "var(--paper-soft)",
           color: open ? "var(--paper)" : "var(--ink)",
           borderRadius: 9999,
@@ -97,23 +98,14 @@ export function Header() {
           fontSize: 14,
           textTransform: "uppercase",
           letterSpacing: "0.04em",
-          transition: "background 220ms var(--ease-out), color 220ms var(--ease-out), padding 320ms var(--ease-out)",
-          minWidth: open ? 56 : 0,
-          height: open ? 56 : "auto",
-          justifyContent: "center",
+          transition: "background 220ms var(--ease-out), color 220ms var(--ease-out)",
         }}
       >
-        {open ? (
-          <span aria-hidden="true" style={{ position: "relative", width: 16, height: 16 }}>
-            <span style={{ position: "absolute", top: "50%", left: 0, right: 0, height: 1.6, background: "currentColor", transform: "translateY(-50%) rotate(45deg)" }} />
-            <span style={{ position: "absolute", top: "50%", left: 0, right: 0, height: 1.6, background: "currentColor", transform: "translateY(-50%) rotate(-45deg)" }} />
-          </span>
-        ) : (
-          <>
-            <span>Menu</span>
-            <span aria-hidden="true" style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--sage)" }} />
-          </>
-        )}
+        <span className="hamburger" aria-hidden="true">
+          <span className="hamburger-bar" data-pos="top" />
+          <span className="hamburger-bar" data-pos="bottom" />
+        </span>
+        <span className="hamburger-label">{open ? "Close" : "Menu"}</span>
       </button>
     </header>
   );

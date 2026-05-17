@@ -1,52 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { WavesCanvas } from "./WavesCanvas";
+import dynamic from "next/dynamic";
 import { ArrowUpRight } from "./icons";
 
-function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
-  const [v, setV] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    let raf = 0;
-
-    const run = () => {
-      cancelAnimationFrame(raf);
-      const start = performance.now();
-      const dur = 1400;
-      const tick = (t: number) => {
-        const p = Math.min((t - start) / dur, 1);
-        const eased = 1 - Math.pow(1 - p, 3);
-        setV(Math.floor(eased * to));
-        if (p < 1) raf = requestAnimationFrame(tick);
-      };
-      raf = requestAnimationFrame(tick);
-    };
-
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setV(0);
-          run();
-        } else {
-          cancelAnimationFrame(raf);
-        }
-      },
-      { threshold: 0.4 }
-    );
-    io.observe(el);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      io.disconnect();
-    };
-  }, [to]);
-
-  return <span ref={ref}>{v}{suffix}</span>;
-}
+const ThreeMoon = dynamic(() => import("./ThreeMoon"), {
+  ssr: false,
+  loading: () => (
+    <div
+      aria-hidden="true"
+      style={{
+        width: "100%",
+        height: "100%",
+        borderRadius: "50%",
+        background:
+          "radial-gradient(circle at 35% 35%, rgba(253,253,253,0.35) 0%, rgba(33,33,33,0.95) 55%, rgba(33,33,33,1) 80%)",
+      }}
+    />
+  ),
+});
 
 export function Hero() {
   return (
@@ -56,36 +27,34 @@ export function Hero() {
       style={{
         position: "relative",
         minHeight: "100svh",
-        padding: "96px var(--gutter) 48px",
+        padding: "112px var(--gutter) 56px",
         background: "var(--ink)",
         color: "var(--paper)",
         overflow: "hidden",
         display: "grid",
-        gridTemplateRows: "auto 1fr auto",
-        rowGap: 32,
+        gridTemplateRows: "1fr auto",
       }}
     >
-      <WavesCanvas />
-
       <div
-        className="hero-stats"
+        aria-hidden="true"
         style={{
-          position: "relative",
-          zIndex: 1,
-          display: "flex",
-          justifyContent: "space-between",
-          flexWrap: "wrap",
-          gap: 12,
-          fontFamily: "var(--font-nohemi)",
-          fontSize: 13,
-          padding: "20px 0",
-          borderBottom: "1px solid rgba(253,253,253,0.18)",
-          color: "rgba(253,253,253,0.85)",
+          position: "absolute",
+          inset: 0,
+          display: "grid",
+          placeItems: "center",
+          zIndex: 0,
+          pointerEvents: "none",
         }}
       >
-        <span><Counter to={12} suffix="+" /> Projects Shipped</span>
-        <span><Counter to={2} suffix="y" /> Building Production Apps</span>
-        <span><Counter to={25} suffix="+" /> APIs Deployed</span>
+        <div
+          style={{
+            width: "min(62vh, 62vw)",
+            aspectRatio: "1 / 1",
+            opacity: 0.92,
+          }}
+        >
+          <ThreeMoon />
+        </div>
       </div>
 
       <h1
@@ -95,101 +64,65 @@ export function Hero() {
           zIndex: 1,
           margin: 0,
           alignSelf: "center",
-          padding: "8px 0",
           fontFamily: "var(--font-thunder-lc)",
           fontWeight: 900,
-          fontSize: "clamp(48px, 12vw, 196px)",
+          fontSize: "clamp(56px, 12vw, 196px)",
           lineHeight: 0.9,
           letterSpacing: "-0.01em",
           textTransform: "uppercase",
           color: "var(--paper)",
+          textShadow: "0 4px 30px rgba(0,0,0,0.35)",
         }}
       >
         <span style={{ display: "block", overflow: "hidden", textAlign: "left" }}>
-          <span style={{ display: "block", animation: "heroLineUp 900ms cubic-bezier(0.22,1,0.36,1) 200ms both" }}>
+          <span className="hero-line">
             I Build Modern <span style={{ color: "var(--sage)" }}>Websites</span>
           </span>
         </span>
         <span style={{ display: "block", overflow: "hidden", textAlign: "right" }}>
-          <span style={{ display: "block", animation: "heroLineUp 900ms cubic-bezier(0.22,1,0.36,1) 380ms both" }}>
+          <span className="hero-line hero-line--late">
             That{" "}
             <span style={{ position: "relative", display: "inline-block" }}>
               Work
-              <span
-                aria-hidden="true"
-                style={{
-                  position: "absolute",
-                  left: 0,
-                  right: 0,
-                  bottom: "-6px",
-                  height: 5,
-                  background: "var(--sage)",
-                  transformOrigin: "left",
-                  animation: "underlineExpand 900ms cubic-bezier(0.22,1,0.36,1) 1400ms both",
-                }}
-              />
+              <span aria-hidden="true" className="hero-underline" />
             </span>
           </span>
         </span>
       </h1>
 
       <div
-        className="hero-about"
         style={{
           position: "relative",
           zIndex: 1,
-          display: "grid",
-          gridTemplateColumns: "auto minmax(280px, 460px)",
+          display: "flex",
           justifyContent: "space-between",
-          alignItems: "start",
+          alignItems: "end",
           gap: 24,
+          fontFamily: "var(--font-nohemi)",
+          fontSize: 12,
+          color: "rgba(253,253,253,0.7)",
+          textTransform: "uppercase",
+          letterSpacing: "0.06em",
         }}
       >
-        <p
+        <a
+          href="#about"
+          data-cursor="hover"
+          className="arrow-link"
           style={{
-            margin: 0,
-            fontFamily: "var(--font-nohemi)",
-            fontWeight: 200,
-            fontSize: 11.65,
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
             color: "var(--paper)",
-            lineHeight: 1,
-            paddingTop: 4,
+            fontSize: 13,
+            fontWeight: 500,
+            textTransform: "none",
+            letterSpacing: 0,
           }}
         >
-          About
-        </p>
-        <div>
-          <p style={{ margin: 0, fontFamily: "var(--font-nohemi)", fontSize: 14, lineHeight: 1.65, color: "rgba(253,253,253,0.78)", textAlign: "right" }}>
-            I&apos;m a full-stack developer focused on building modern, fast, and reliable web applications. I care not only about how a site looks, but also about how it performs, scales, and feels for real users. From clean MERN-stack code to polished Next.js front-ends and secure APIs, I make sure every project is built with attention to detail and long-term quality in mind.
-          </p>
-          <div style={{ display: "flex", gap: 16, justifyContent: "flex-end", flexWrap: "wrap", marginTop: 20 }}>
-            <a
-              href="#approach"
-              data-cursor="hover"
-              className="arrow-link"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 6,
-                fontFamily: "var(--font-nohemi)",
-                fontWeight: 500,
-                fontSize: 14,
-                color: "var(--paper)",
-              }}
-            >
-              Learn more <ArrowUpRight />
-            </a>
-            <a
-              href="https://linkedin.com/in/devagarwalla"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-cursor="hover"
-              className="pill pill--sage"
-            >
-              View Résumé <ArrowUpRight />
-            </a>
-          </div>
-        </div>
+          Scroll <ArrowUpRight />
+        </a>
+        <span>Bengaluru, India · 2026</span>
       </div>
     </section>
   );
