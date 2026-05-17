@@ -166,20 +166,44 @@ html.lenis body { height: auto; }
    ============================================================ */
 @media (max-width: 1024px) {
   :root { --gutter: clamp(16px, 4vw, 40px); }
+  .hero-headline { font-size: clamp(56px, 11vw, 140px) !important; }
 }
 
 @media (max-width: 768px) {
   :root { --gutter: 20px; }
   /* Collapse 2-col grids to single column */
-  section [style*="gridTemplateColumns"] { grid-template-columns: 1fr !important; }
-  section [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
-  /* Hide vertical column grid on very small screens (too noisy) */
+  section [style*="gridTemplateColumns"]:not(.hero-stats) { grid-template-columns: 1fr !important; }
+  section [style*="grid-template-columns"]:not(.hero-stats) { grid-template-columns: 1fr !important; }
+  /* Hide vertical column grid on very small screens */
   .col-grid { background-image: none !important; }
-  /* Right edge badge: smaller */
-  aside[aria-label="Awwwards honors"] { display: none; }
+  aside[aria-label*="awwwards" i] { display: none; }
+  /* Hero stats: stack as 3-row column */
+  .hero-stats { flex-direction: column !important; align-items: flex-start; gap: 6px !important; padding: 16px 0 !important; }
+  .hero-about { grid-template-columns: 60px 1fr !important; }
+  .hero-about p { text-align: left !important; }
+  .hero-about > div > div { justify-content: flex-start !important; }
+  /* Footer columns stack */
+  footer > div:first-child { grid-template-columns: 1fr 1fr !important; }
 }
 
 @media (max-width: 480px) {
   /* Header: hide MENU label text, keep button */
   header button[aria-controls="site-menu"] span:first-child { display: none; }
+  .hero-headline { font-size: clamp(44px, 14vw, 80px) !important; line-height: 0.92 !important; }
+  /* Footer columns single column */
+  footer > div:first-child { grid-template-columns: 1fr !important; }
+  footer > div:first-child > div:last-child { text-align: left !important; }
+  /* Menu items smaller */
+  .menu-item-row span:nth-child(2) { font-size: clamp(48px, 14vw, 96px) !important; }
 }
+
+/* Arrow link hover micro-interaction (live chkstepan pattern) */
+.arrow-link { transition: opacity 200ms var(--ease-out); }
+.arrow-link svg { transition: transform 280ms var(--ease-out); }
+.arrow-link:hover svg { transform: translate(3px, -3px); }
+.arrow-link:hover { opacity: 0.85; }
+
+/* Project gallery rows: arrow slides on hover */
+[data-cursor="hover"] svg { transition: transform 280ms var(--ease-out); }
+a[data-cursor="hover"]:hover > span:last-child > svg,
+a[data-cursor="hover"]:hover > svg { transform: translate(3px, -3px); }

@@ -30,23 +30,28 @@ export function Hero() {
       style={{
         position: "relative",
         minHeight: "100vh",
-        padding: "96px var(--gutter) 80px",
+        padding: "112px var(--gutter) 64px",
         background: "var(--ink)",
         color: "var(--paper)",
         overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <WavesCanvas />
 
       <div
+        className="hero-stats"
         style={{
           position: "relative",
           zIndex: 1,
           display: "flex",
           justifyContent: "space-between",
+          flexWrap: "wrap",
+          gap: 12,
           fontFamily: "var(--font-nohemi)",
           fontSize: 13,
-          padding: "24px 0",
+          padding: "20px 0",
           borderBottom: "1px solid rgba(253,253,253,0.18)",
           color: "rgba(253,253,253,0.85)",
         }}
@@ -57,25 +62,27 @@ export function Hero() {
       </div>
 
       <h1
+        className="hero-headline"
         style={{
           position: "relative",
           zIndex: 1,
-          margin: "32px 0 80px",
+          margin: "auto 0",
+          padding: "32px 0",
           fontFamily: "var(--font-thunder-lc)",
           fontWeight: 900,
-          fontSize: "clamp(60px, 13vw, 178px)",
+          fontSize: "clamp(56px, 13vw, 200px)",
           lineHeight: 0.9,
           letterSpacing: "-0.01em",
           textTransform: "uppercase",
           color: "var(--paper)",
         }}
       >
-        <span style={{ display: "block", overflow: "hidden" }}>
+        <span style={{ display: "block", overflow: "hidden", textAlign: "left" }}>
           <span style={{ display: "block", animation: "heroLineUp 900ms cubic-bezier(0.22,1,0.36,1) 200ms both" }}>
             I Build Modern <span style={{ color: "var(--sage)" }}>Websites</span>
           </span>
         </span>
-        <span style={{ display: "block", overflow: "hidden", textAlign: "center" }}>
+        <span style={{ display: "block", overflow: "hidden", textAlign: "right" }}>
           <span style={{ display: "block", animation: "heroLineUp 900ms cubic-bezier(0.22,1,0.36,1) 380ms both" }}>
             That{" "}
             <span style={{ position: "relative", display: "inline-block" }}>
@@ -99,15 +106,15 @@ export function Hero() {
       </h1>
 
       <div
+        className="hero-about"
         style={{
           position: "relative",
           zIndex: 1,
           display: "grid",
-          gridTemplateColumns: "120px 1fr",
+          gridTemplateColumns: "auto minmax(280px, 460px)",
+          alignItems: "start",
           gap: 24,
-          maxWidth: 720,
-          marginLeft: "auto",
-          marginRight: 0,
+          marginTop: 24,
         }}
       >
         <p
@@ -117,19 +124,21 @@ export function Hero() {
             fontWeight: 200,
             fontSize: 11.65,
             color: "var(--paper)",
-            textAlign: "right",
+            lineHeight: 1,
+            paddingTop: 4,
           }}
         >
           About
         </p>
-        <div style={{ textAlign: "right" }}>
-          <p style={{ margin: 0, fontFamily: "var(--font-nohemi)", fontSize: 14, lineHeight: 1.65, color: "rgba(253,253,253,0.78)" }}>
+        <div>
+          <p style={{ margin: 0, fontFamily: "var(--font-nohemi)", fontSize: 14, lineHeight: 1.65, color: "rgba(253,253,253,0.78)", textAlign: "right" }}>
             I&apos;m a full-stack developer focused on building modern, fast, and reliable web applications. I care not only about how a site looks, but also about how it performs, scales, and feels for real users. From clean MERN-stack code to polished Next.js front-ends and secure APIs, I make sure every project is built with attention to detail and long-term quality in mind.
           </p>
           <div style={{ display: "flex", gap: 16, justifyContent: "flex-end", flexWrap: "wrap", marginTop: 20 }}>
             <a
               href="#approach"
               data-cursor="hover"
+              className="arrow-link"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -147,6 +156,7 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="hover"
+              className="arrow-link"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
