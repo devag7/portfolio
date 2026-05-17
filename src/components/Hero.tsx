@@ -69,57 +69,37 @@ export function Hero() {
         <span><Counter to={25} suffix="+" /> APIs Deployed</span>
       </div>
 
-      <div style={{ position: "relative", zIndex: 1, display: "grid", placeItems: "center" }}>
-        <h1
-          className="hero-headline"
-          style={{
-            margin: 0,
-            fontFamily: "var(--font-thunder-lc)",
-            fontWeight: 900,
-            fontSize: "clamp(56px, 12vw, 196px)",
-            lineHeight: 0.9,
-            letterSpacing: "-0.01em",
-            textTransform: "uppercase",
-            color: "var(--paper)",
-            width: "100%",
-          }}
-        >
-          <span style={{ display: "block", overflow: "hidden", textAlign: "left" }}>
-            <span className="hero-line">
-              I Build Modern <span style={{ color: "var(--sage)" }}>Websites</span>
+      <h1
+        className="hero-headline"
+        style={{
+          position: "relative",
+          zIndex: 1,
+          margin: 0,
+          alignSelf: "center",
+          fontFamily: "var(--font-thunder-lc)",
+          fontWeight: 900,
+          fontSize: "clamp(56px, 12vw, 196px)",
+          lineHeight: 0.9,
+          letterSpacing: "-0.01em",
+          textTransform: "uppercase",
+          color: "var(--paper)",
+        }}
+      >
+        <span style={{ display: "block", overflow: "hidden", textAlign: "left" }}>
+          <span className="hero-line">
+            I Build Modern <span style={{ color: "var(--sage)" }}>Websites</span>
+          </span>
+        </span>
+        <span style={{ display: "block", overflow: "hidden", textAlign: "right" }}>
+          <span className="hero-line hero-line--late">
+            That{" "}
+            <span style={{ position: "relative", display: "inline-block" }}>
+              Work
+              <span aria-hidden="true" className="hero-underline" />
             </span>
           </span>
-          <span style={{ display: "block", overflow: "hidden", textAlign: "right" }}>
-            <span className="hero-line hero-line--late">
-              That{" "}
-              <span style={{ position: "relative", display: "inline-block" }}>
-                Work
-                <span aria-hidden="true" className="hero-underline" />
-              </span>
-            </span>
-          </span>
-        </h1>
-
-        <div
-          aria-hidden="true"
-          className="hero-moon"
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: 92,
-            aspectRatio: "1 / 1",
-            borderRadius: "50%",
-            background:
-              "radial-gradient(circle at 32% 30%, rgba(253,253,253,0.85) 0%, rgba(180,180,180,0.55) 22%, rgba(60,60,60,0.95) 60%, rgba(20,20,20,1) 85%)",
-            boxShadow: "inset -10px -10px 30px rgba(0,0,0,0.6), 0 0 24px rgba(0,0,0,0.4)",
-            opacity: 0.92,
-            pointerEvents: "none",
-            animation: "moonFadeIn 1200ms cubic-bezier(0.22,1,0.36,1) 200ms both",
-          }}
-        />
-      </div>
+        </span>
+      </h1>
 
       <div
         className="hero-about"
