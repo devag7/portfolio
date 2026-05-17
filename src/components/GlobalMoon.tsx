@@ -10,11 +10,11 @@ export function GlobalMoon() {
       style={{
         position: "fixed",
         left: "50%",
-        bottom: "8vh",
+        bottom: "12vh",
         transform: "translateX(-50%)",
         width: "clamp(72px, 7vw, 104px)",
         aspectRatio: "1 / 1",
-        zIndex: 2,
+        zIndex: 0,
         pointerEvents: "none",
         borderRadius: "50%",
         overflow: "hidden",

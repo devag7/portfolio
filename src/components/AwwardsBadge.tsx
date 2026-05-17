@@ -14,10 +14,10 @@ export function AwwardsBadge() {
       aria-label="Dev Agarwalla portfolio"
       style={{
         position: "fixed",
-        right: 24,
-        bottom: 24,
-        width: 132,
-        height: 132,
+        right: 20,
+        bottom: 20,
+        width: 108,
+        height: 108,
         zIndex: 9989,
         pointerEvents: "none",
       }}
@@ -30,11 +30,11 @@ export function AwwardsBadge() {
           color: "var(--paper)",
         }}
       >
-        <svg viewBox="0 0 132 132" width="132" height="132" aria-hidden="true">
+        <svg viewBox="0 0 108 108" width="108" height="108" aria-hidden="true">
           <defs>
-            <path id="badge-circle" d="M 66, 66 m -52, 0 a 52,52 0 1,1 104,0 a 52,52 0 1,1 -104,0" />
+            <path id="badge-circle" d="M 54, 54 m -42, 0 a 42,42 0 1,1 84,0 a 42,42 0 1,1 -84,0" />
           </defs>
-          <text fontFamily="var(--font-nohemi)" fontSize="9.5" letterSpacing="2.2" fill="currentColor" fontWeight={600}>
+          <text fontFamily="var(--font-nohemi)" fontSize="8.5" letterSpacing="1.8" fill="currentColor" fontWeight={600}>
             <textPath href="#badge-circle" startOffset="0">{TEXT.repeat(3)}</textPath>
           </text>
         </svg>
@@ -44,8 +44,8 @@ export function AwwardsBadge() {
           position: "absolute",
           top: "50%",
           left: "50%",
-          width: 56,
-          height: 56,
+          width: 44,
+          height: 44,
           transform: "translate(-50%, -50%)",
           borderRadius: "50%",
           overflow: "hidden",
