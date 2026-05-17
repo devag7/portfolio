@@ -1,33 +1,83 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+import { LenisProvider } from "@/components/LenisProvider";
+import { Preloader } from "@/components/Preloader";
+import { Cursor } from "@/components/Cursor";
+import { Header } from "@/components/Header";
+import { AwwardsBadge } from "@/components/AwwardsBadge";
+import { MenuOverlay } from "@/components/MenuOverlay";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const thunderLC = localFont({
+  src: [
+    { path: "../../public/fonts/Thunder/Thunder-LightLC.woff2", weight: "300", style: "normal" },
+    { path: "../../public/fonts/Thunder/Thunder-MediumLC.woff2", weight: "500", style: "normal" },
+    { path: "../../public/fonts/Thunder/Thunder-SemiBoldLC.woff2", weight: "600", style: "normal" },
+    { path: "../../public/fonts/Thunder/Thunder-BoldLC.woff2", weight: "700", style: "normal" },
+    { path: "../../public/fonts/Thunder/Thunder-ExtraBoldLC.woff2", weight: "800", style: "normal" },
+    { path: "../../public/fonts/Thunder/Thunder-BlackLC.woff2", weight: "900", style: "normal" },
+    { path: "../../public/fonts/Thunder/Thunder-BlackLCItalic.woff2", weight: "900", style: "italic" },
+  ],
+  variable: "--font-thunder-lc",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const thunderHC = localFont({
+  src: [
+    { path: "../../public/fonts/Thunder/Thunder-BlackHC.woff2", weight: "900", style: "normal" },
+    { path: "../../public/fonts/Thunder/Thunder-BlackHCItalic.woff2", weight: "900", style: "italic" },
+  ],
+  variable: "--font-thunder-hc",
+  display: "swap",
+});
+
+const nohemi = localFont({
+  src: [
+    { path: "../../public/fonts/Nohemi/Nohemi-Thin.woff2", weight: "100", style: "normal" },
+    { path: "../../public/fonts/Nohemi/Nohemi-ExtraLight.woff2", weight: "200", style: "normal" },
+    { path: "../../public/fonts/Nohemi/Nohemi-Light.woff2", weight: "300", style: "normal" },
+    { path: "../../public/fonts/Nohemi/Nohemi-Regular.woff2", weight: "400", style: "normal" },
+    { path: "../../public/fonts/Nohemi/Nohemi-Medium.woff2", weight: "500", style: "normal" },
+    { path: "../../public/fonts/Nohemi/Nohemi-SemiBold.woff2", weight: "600", style: "normal" },
+    { path: "../../public/fonts/Nohemi/Nohemi-Bold.woff2", weight: "700", style: "normal" },
+    { path: "../../public/fonts/Nohemi/Nohemi-ExtraBold.woff2", weight: "800", style: "normal" },
+    { path: "../../public/fonts/Nohemi/Nohemi-Black.woff2", weight: "900", style: "normal" },
+  ],
+  variable: "--font-nohemi",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Website Clone",
-  description: "Pixel-perfect website clone",
+  title: "Dev Agarwalla — Full-Stack Developer · Bengaluru",
+  description: "Software Engineer · Full Stack Developer (MERN, Next.js, React.js) · Building scalable web applications. Based in Bengaluru, India.",
+  metadataBase: new URL("https://devagarwalla.dev"),
+  openGraph: {
+    title: "Dev Agarwalla — Full-Stack Developer",
+    description: "Building modern, fast, and reliable web applications with the MERN stack and Next.js.",
+    type: "website",
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@DevAgarwalla",
+    creator: "@DevAgarwalla",
+  },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`lenis ${thunderLC.variable} ${thunderHC.variable} ${nohemi.variable}`}>
+      <body>
+        <LenisProvider>
+          <div className="col-grid" aria-hidden="true" />
+          <Preloader />
+          <Cursor />
+          <Header />
+          <AwwardsBadge />
+          <MenuOverlay />
+          {children}
+        </LenisProvider>
+      </body>
     </html>
   );
 }
