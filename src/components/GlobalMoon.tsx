@@ -1,11 +1,6 @@
 "use client";
 
-import dynamic from "next/dynamic";
-
-const ThreeMoon = dynamic(() => import("./ThreeMoon"), {
-  ssr: false,
-  loading: () => null,
-});
+import Image from "next/image";
 
 export function GlobalMoon() {
   return (
@@ -15,16 +10,26 @@ export function GlobalMoon() {
       style={{
         position: "fixed",
         left: "50%",
-        bottom: "10vh",
+        bottom: "8vh",
         transform: "translateX(-50%)",
-        width: "clamp(80px, 8vw, 120px)",
+        width: "clamp(72px, 7vw, 104px)",
         aspectRatio: "1 / 1",
         zIndex: 2,
         pointerEvents: "none",
-        filter: "drop-shadow(0 6px 18px rgba(0,0,0,0.5))",
+        borderRadius: "50%",
+        overflow: "hidden",
+        boxShadow: "0 8px 22px rgba(0, 0, 0, 0.45)",
+        animation: "moonSpin 90s linear infinite, moonFadeIn 1200ms cubic-bezier(0.22,1,0.36,1) 400ms both",
       }}
     >
-      <ThreeMoon />
+      <Image
+        src="/images/other/Moon.webp"
+        alt=""
+        width={208}
+        height={208}
+        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+        priority={false}
+      />
     </div>
   );
 }

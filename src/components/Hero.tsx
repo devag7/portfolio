@@ -87,11 +87,7 @@ export function Hero() {
       >
         <span style={{ display: "block", overflow: "hidden", textAlign: "left" }}>
           <span className="hero-line">
-            I Build Modern{" "}
-            <span style={{ position: "relative", color: "var(--sage)", display: "inline-block" }}>
-              Websites
-              <span aria-hidden="true" className="hero-underline hero-underline--sage" />
-            </span>
+            I Build Modern <span style={{ color: "var(--sage)" }}>Websites</span>
           </span>
         </span>
         <span style={{ display: "block", overflow: "hidden", textAlign: "right" }}>
