@@ -1,36 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 import { WavesCanvas } from "./WavesCanvas";
 import { ArrowUpRight } from "./icons";
 
-const ThreeMoon = dynamic(() => import("./ThreeMoon"), {
-  ssr: false,
-  loading: () => (
-    <div
-      aria-hidden="true"
-      style={{
-        width: "100%",
-        height: "100%",
-        borderRadius: "50%",
-        background:
-          "radial-gradient(circle at 35% 35%, rgba(253,253,253,0.4) 0%, rgba(33,33,33,0.95) 60%, rgba(33,33,33,1) 80%)",
-      }}
-    />
-  ),
-});
-
 function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   const [v, setV] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
     let raf = 0;
-    const run = () => {
-      cancelAnimationFrame(raf);
+    const delay = window.setTimeout(() => {
       const start = performance.now();
       const dur = 1400;
       const tick = (t: number) => {
@@ -40,26 +19,14 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
         if (p < 1) raf = requestAnimationFrame(tick);
       };
       raf = requestAnimationFrame(tick);
-    };
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setV(0);
-          run();
-        } else {
-          cancelAnimationFrame(raf);
-        }
-      },
-      { threshold: 0.4 }
-    );
-    io.observe(el);
+    }, 2100);
     return () => {
+      window.clearTimeout(delay);
       cancelAnimationFrame(raf);
-      io.disconnect();
     };
   }, [to]);
 
-  return <span ref={ref}>{v}{suffix}</span>;
+  return <>{v}{suffix}</>;
 }
 
 export function Hero() {
@@ -135,6 +102,7 @@ export function Hero() {
 
         <div
           aria-hidden="true"
+          className="hero-moon"
           style={{
             position: "absolute",
             top: "50%",
@@ -142,12 +110,15 @@ export function Hero() {
             transform: "translate(-50%, -50%)",
             width: 92,
             aspectRatio: "1 / 1",
-            opacity: 0.95,
+            borderRadius: "50%",
+            background:
+              "radial-gradient(circle at 32% 30%, rgba(253,253,253,0.85) 0%, rgba(180,180,180,0.55) 22%, rgba(60,60,60,0.95) 60%, rgba(20,20,20,1) 85%)",
+            boxShadow: "inset -10px -10px 30px rgba(0,0,0,0.6), 0 0 24px rgba(0,0,0,0.4)",
+            opacity: 0.92,
             pointerEvents: "none",
+            animation: "moonFadeIn 1200ms cubic-bezier(0.22,1,0.36,1) 200ms both",
           }}
-        >
-          <ThreeMoon />
-        </div>
+        />
       </div>
 
       <div

@@ -131,7 +131,7 @@ html.lenis body { height: auto; }
    Animations
    ============================================================ */
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@keyframes moonFadeIn { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: scale(1); } }
+@keyframes moonFadeIn { from { opacity: 0; transform: translate(-50%, -50%) scale(0.94); } to { opacity: 0.92; transform: translate(-50%, -50%) scale(1); } }
 
 /* Menu hover marquee reveal (default is inline on .menu-marquee; override on hover) */
 .menu-item-row:hover .menu-marquee,
