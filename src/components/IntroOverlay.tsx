@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { lenisStore } from "@/lib/lenis-store";
 
-const COUNT_DURATION = 1400;
-const SWEEP_DURATION = 600;
+const COUNT_DURATION = 1800;
+const SWEEP_DURATION = 800;
 const TOTAL = COUNT_DURATION + SWEEP_DURATION;
 
 function markDone() {
@@ -41,7 +41,7 @@ export function IntroOverlay() {
     const tick = (t: number) => {
       const elapsed = t - start;
       const p = Math.min(elapsed / COUNT_DURATION, 1);
-      const eased = 1 - Math.pow(1 - p, 3);
+      const eased = 1 - Math.pow(1 - p, 5);
       setPct(Math.round(eased * 100));
       if (p < 1) rafId = requestAnimationFrame(tick);
     };

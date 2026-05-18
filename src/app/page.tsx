@@ -15,8 +15,8 @@ export default function Home() {
       <Hero />
       <StrategySection />
       <ClarityBanner />
-      <CaseStudies />
       <WhatYouGet />
+      <CaseStudies />
       <ProjectsGallery />
       <AboutSkills />
       <CtaSection />

@@ -31,8 +31,8 @@ export function Cursor() {
 
     let raf = 0;
     const loop = () => {
-      current.current.x += (target.current.x - current.current.x) * 0.18;
-      current.current.y += (target.current.y - current.current.y) * 0.18;
+      current.current.x += (target.current.x - current.current.x) * 0.14;
+      current.current.y += (target.current.y - current.current.y) * 0.14;
       if (ref.current) {
         ref.current.style.transform = `translate3d(${current.current.x - 14}px, ${current.current.y - 14}px, 0)`;
       }

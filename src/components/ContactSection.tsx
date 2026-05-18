@@ -61,6 +61,32 @@ export function ContactSection() {
             <a href="https://github.com/devag7" target="_blank" rel="noopener noreferrer" style={{ display: "block" }}>github.com/devag7</a>
             <a href="https://linkedin.com/in/devagarwalla" target="_blank" rel="noopener noreferrer" style={{ display: "block" }}>linkedin.com/in/devagarwalla</a>
             <a href="https://x.com/DevAgarwalla" target="_blank" rel="noopener noreferrer" style={{ display: "block" }}>x.com/DevAgarwalla</a>
+            <a
+              href="https://www.linkedin.com/comm/mynetwork/discovery-see-all?usecase=PEOPLE_FOLLOWS&followMember=devagarwalla"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-cursor="hover"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 200,
+                height: 32,
+                marginTop: 12,
+                padding: 7,
+                borderRadius: 16,
+                background: "#0A66C2",
+                color: "#ffffff",
+                fontFamily: '"SF Pro Text", Helvetica, sans-serif',
+                fontSize: 13,
+                fontWeight: 500,
+                textDecoration: "none",
+                transition: "transform 240ms var(--ease-out), box-shadow 240ms var(--ease-out)",
+                boxShadow: "0 4px 14px rgba(10, 102, 194, 0.35)",
+              }}
+            >
+              Follow on LinkedIn
+            </a>
           </Block>
           <Block k="Working with"><p style={{ margin: 0 }}>Founders and small teams shipping production web apps — usually MERN, Next.js, or React.</p></Block>
           <Block k="Response time"><p style={{ margin: 0 }}>Usually within 24 hours, Mon–Fri IST.</p></Block>

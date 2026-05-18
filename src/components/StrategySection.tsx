@@ -125,17 +125,6 @@ export function StrategySection() {
             <span style={{ display: "block", paddingLeft: "1.6em" }}>Every Project?</span>
           </h2>
         </div>
-        <div aria-hidden="true" style={{ width: 140, height: 140, position: "relative", animation: "spin360 22s linear infinite", color: "var(--paper)" }}>
-          <svg viewBox="0 0 160 160" width="100%" height="100%">
-            <defs>
-              <path id="ring-path" d="M 80 80 m -64 0 a 64 64 0 1 1 128 0 a 64 64 0 1 1 -128 0" />
-            </defs>
-            <text fill="currentColor" fontFamily="var(--font-nohemi)" fontSize="12" letterSpacing="0.04em">
-              <textPath href="#ring-path" startOffset="0">dev agarwalla · portfolio · dev agarwalla · portfolio · </textPath>
-            </text>
-            <circle cx="80" cy="80" r="3" fill="currentColor" />
-          </svg>
-        </div>
       </div>
 
       <Marquee />

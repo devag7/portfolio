@@ -10,8 +10,10 @@ export function LenisProvider({ children }: { children: React.ReactNode }) {
     if (reduced) return;
 
     const lenis = new Lenis({
-      lerp: 0.1,
+      lerp: 0.075,
       smoothWheel: true,
+      wheelMultiplier: 0.95,
+      touchMultiplier: 1.6,
     });
     lenisStore.set(lenis);
 

@@ -11,15 +11,15 @@ function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
     let raf = 0;
     const delay = window.setTimeout(() => {
       const start = performance.now();
-      const dur = 1400;
+      const dur = 1600;
       const tick = (t: number) => {
         const p = Math.min((t - start) / dur, 1);
-        const eased = 1 - Math.pow(1 - p, 3);
+        const eased = 1 - Math.pow(1 - p, 5);
         setV(Math.floor(eased * to));
         if (p < 1) raf = requestAnimationFrame(tick);
       };
       raf = requestAnimationFrame(tick);
-    }, 2100);
+    }, 2700);
     return () => {
       window.clearTimeout(delay);
       cancelAnimationFrame(raf);
@@ -150,7 +150,7 @@ export function Hero() {
               Learn more <ArrowUpRight />
             </a>
             <a
-              href="https://linkedin.com/in/devagarwalla"
+              href="https://drive.google.com/file/d/1axco4cIV7plhH2A35AKtyDA_95_Avs8R/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               data-cursor="hover"

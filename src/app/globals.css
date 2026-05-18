@@ -17,11 +17,12 @@
   --page-max: 1440px;
   --gutter: clamp(20px, 4vw, 64px);
 
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-snap: cubic-bezier(0.65, 0, 0.35, 1);
-  --dur-fast: 200ms;
-  --dur-med: 400ms;
-  --dur-slow: 800ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-snap: cubic-bezier(0.83, 0, 0.17, 1);
+  --ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --dur-fast: 220ms;
+  --dur-med: 480ms;
+  --dur-slow: 900ms;
 
   --col-line: rgba(253, 253, 253, 0.06);
   --col-line-inv: rgba(33, 33, 33, 0.04);
@@ -78,10 +79,10 @@ footer a, [role="dialog"] a { padding: 8px 0; display: inline-block; min-height:
 /* ============================================================
    Scroll reveal entrance animations
    ============================================================ */
-.reveal { opacity: 0; transform: translateY(40px); transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out); }
+.reveal { opacity: 0; transform: translateY(36px); transition: opacity 900ms var(--ease-expo), transform 900ms var(--ease-expo); }
 .reveal.in-view { opacity: 1; transform: translateY(0); }
 .reveal-line { display: block; overflow: hidden; }
-.reveal-line > * { display: block; transform: translateY(110%); transition: transform 800ms var(--ease-out); }
+.reveal-line > * { display: block; transform: translateY(110%); transition: transform 1000ms var(--ease-expo); }
 .reveal-line.in-view > * { transform: translateY(0); }
 
 /* ============================================================
@@ -269,8 +270,8 @@ a[data-cursor="hover"]:hover > svg { transform: translate(3px, -3px); }
   transition: transform 240ms var(--ease-out), box-shadow 240ms var(--ease-out), background 200ms var(--ease-out), color 200ms var(--ease-out);
   will-change: transform;
 }
-.pill:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18); }
-.pill:active { transform: translateY(0); transition-duration: 80ms; }
+.pill:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22); }
+.pill:active { transform: translateY(-1px); transition-duration: 80ms; }
 .pill svg { transition: transform 280ms var(--ease-out); }
 .pill:hover svg { transform: translate(3px, -3px); }
 
