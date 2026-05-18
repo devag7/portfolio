@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { WavesCanvas } from "./WavesCanvas";
-import { AwwardsBadge } from "./AwwardsBadge";
 import { ArrowUpRight } from "./icons";
 
 function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
@@ -162,8 +161,6 @@ export function Hero() {
           </div>
         </div>
       </div>
-
-      <AwwardsBadge />
     </section>
   );
 }

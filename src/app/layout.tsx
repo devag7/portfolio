@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { LenisProvider } from "@/components/LenisProvider";
 import { IntroOverlay } from "@/components/IntroOverlay";
-import { GlobalMoon } from "@/components/GlobalMoon";
 import { Cursor } from "@/components/Cursor";
 import { Header } from "@/components/Header";
 import { MenuOverlay } from "@/components/MenuOverlay";
@@ -72,7 +71,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <LenisProvider>
           <div className="col-grid" aria-hidden="true" />
           <IntroOverlay />
-          <GlobalMoon />
           <Cursor />
           <Header />
           <MenuOverlay />
