@@ -33,8 +33,9 @@ export function CtaSection() {
         <br />
         That Actually Works?
       </Reveal>
+      <span aria-hidden="true" className="cta-underline" />
       <p style={{ margin: 0, maxWidth: 540, fontFamily: "var(--font-nohemi)", fontSize: 16, lineHeight: 1.6, color: "rgba(33,33,33,0.7)" }}>
-        Clear design, solid engineering, and focused strategy — working together as one system.
+        Clear design, solid engineering, and focused strategy, working together as one system.
       </p>
       <div style={{ display: "inline-flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
         <a

@@ -88,8 +88,11 @@ export function Header() {
           pointerEvents: "auto",
           display: "inline-flex",
           alignItems: "center",
-          gap: 14,
-          padding: "14px 22px 14px 18px",
+          gap: open ? 0 : 14,
+          padding: open ? 0 : "14px 22px 14px 18px",
+          width: open ? 50 : "auto",
+          height: 50,
+          justifyContent: "center",
           background: open ? "var(--sage)" : "var(--paper-soft)",
           color: open ? "var(--paper)" : "var(--ink)",
           borderRadius: 9999,
@@ -98,7 +101,7 @@ export function Header() {
           fontSize: 14,
           textTransform: "uppercase",
           letterSpacing: "0.04em",
-          transition: "background 220ms var(--ease-out), color 220ms var(--ease-out)",
+          transition: "width 320ms var(--ease-snap), padding 320ms var(--ease-snap), gap 320ms var(--ease-snap), background 220ms var(--ease-out), color 220ms var(--ease-out)",
         }}
       >
         <span className="menu-icon" aria-hidden="true">
@@ -108,7 +111,17 @@ export function Header() {
             <span className="menu-icon-bar" data-pos="bottom" />
           </span>
         </span>
-        <span className="menu-icon-label">{open ? "Close" : "Menu"}</span>
+        <span
+          className="menu-icon-label"
+          style={{
+            opacity: open ? 0 : 1,
+            width: open ? 0 : "auto",
+            overflow: "hidden",
+            transition: "opacity 220ms var(--ease-out), width 320ms var(--ease-snap)",
+          }}
+        >
+          Menu
+        </span>
       </button>
     </header>
   );
