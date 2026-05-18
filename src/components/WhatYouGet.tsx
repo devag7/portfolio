@@ -7,12 +7,14 @@ export function WhatYouGet() {
       data-bg="light"
       style={{
         position: "relative",
-        minHeight: "80vh",
+        minHeight: "90vh",
         background: "var(--paper)",
         color: "var(--ink)",
         display: "flex",
+        flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        gap: 40,
         padding: "clamp(80px, 12vh, 160px) var(--gutter)",
       }}
     >
@@ -51,6 +53,34 @@ export function WhatYouGet() {
           </span>
         </Reveal>
       </h2>
+
+      <Reveal as="span" delay={520} aria-hidden="true" className="wyg-underline" style={{ display: "block" }}><span /></Reveal>
+
+      <Reveal as="div" delay={680} style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 14 }}>
+        <p style={{ margin: 0, maxWidth: 520, textAlign: "center", fontFamily: "var(--font-nohemi)", fontSize: 16, lineHeight: 1.6, color: "rgba(33,33,33,0.7)" }}>
+          Speed without polish loses trust. Polish without speed loses users. I ship work where both win.
+        </p>
+        <a
+          href="#projects"
+          data-cursor="hover"
+          className="arrow-link wyg-cta"
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 8,
+            fontFamily: "var(--font-nohemi)",
+            fontWeight: 600,
+            fontSize: 13,
+            textTransform: "uppercase",
+            letterSpacing: "0.06em",
+            color: "var(--ink)",
+            marginTop: 6,
+          }}
+        >
+          See it in projects
+          <span aria-hidden="true" className="wyg-arrow">↓</span>
+        </a>
+      </Reveal>
     </section>
   );
 }

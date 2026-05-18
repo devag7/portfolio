@@ -134,6 +134,8 @@ html.lenis body { height: auto; }
 @keyframes moonFadeIn { from { opacity: 0; transform: translateX(-50%) scale(0.92); } to { opacity: 1; transform: translateX(-50%) scale(1); } }
 @keyframes badgeSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 @keyframes ctaUnderlineExpand { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes polaroidDrop { from { opacity: 0; transform: translateY(-40px) rotate(var(--rot, 0deg)); } to { opacity: 1; } }
+@keyframes arrowBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
 
 /* CTA section animated sage underline (matches live's underline beneath headline) */
 .cta-underline {
@@ -147,6 +149,25 @@ html.lenis body { height: auto; }
 }
 body.intro-done .cta-underline {
   animation: ctaUnderlineExpand 1100ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both;
+}
+
+/* WhatYouGet — animated sage underline + bobbing scroll arrow */
+.wyg-underline {
+  width: clamp(160px, 18vw, 260px);
+  height: 3px;
+  background: var(--sage);
+  border-radius: 9999px;
+  transform-origin: left;
+  transform: scaleX(0);
+}
+.wyg-underline.in-view {
+  animation: ctaUnderlineExpand 1100ms cubic-bezier(0.22, 1, 0.36, 1) 200ms both;
+}
+.wyg-arrow {
+  display: inline-block;
+  animation: arrowBob 1.8s ease-in-out infinite;
+  font-size: 14px;
+  line-height: 1;
 }
 @media (prefers-reduced-motion: reduce) {
   .cta-underline { transform: scaleX(1) !important; }
