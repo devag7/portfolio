@@ -55,7 +55,7 @@ export function Footer() {
             className="polaroid"
             style={{ top: p.top, left: p.left, width: p.w, transform: `rotate(${p.rotate}deg)`, animationDelay: `${p.delay}ms` }}
           >
-            <Image src={p.src} alt="" width={460} height={345} sizes="230px" loading="lazy" />
+            <Image src={p.src} alt={p.alt} width={460} height={345} sizes="230px" loading="lazy" />
           </div>
         ))}
       </div>
