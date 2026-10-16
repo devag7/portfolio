@@ -19,10 +19,6 @@ export function Reveal({ as: Tag = "div", children, className = "", style, delay
   useEffect(() => {
     const el = ref.current;
     if (!el || seen) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setSeen(true);
-      return;
-    }
     const io = new IntersectionObserver(
       ([e]) => {
         if (e.isIntersecting) {

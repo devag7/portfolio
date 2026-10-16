@@ -51,6 +51,14 @@ export function WavesCanvas() {
     };
 
     resize();
+    // Reduced motion: draw one still frame and stop.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      t = 4000;
+      draw();
+      running = false;
+      cancelAnimationFrame(raf);
+      return () => cancelAnimationFrame(raf);
+    }
     raf = requestAnimationFrame(draw);
     window.addEventListener("resize", resize);
 

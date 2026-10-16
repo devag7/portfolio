@@ -9,17 +9,18 @@ export function Header() {
   const [onLight, setOnLight] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 100);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-
-    // Observe data-bg=light sections to swap header colors
+    // A sentinel at the top of the page tells us when the user has scrolled; no scroll listeners.
+    const sentinel = document.getElementById("top-sentinel");
+    const top = sentinel
+      ? new IntersectionObserver(([e]) => setScrolled(!e.isIntersecting))
+      : null;
+    if (sentinel && top) top.observe(sentinel);
+    // Swap header colours over light sections.
     const observer = new IntersectionObserver(
       (entries) => {
         for (const e of entries) {
           if (e.isIntersecting) {
-            const bg = (e.target as HTMLElement).dataset.bg;
-            const isLight = bg === "light";
+            const isLight = (e.target as HTMLElement).dataset.bg === "light";
             setOnLight(isLight);
             document.body.classList.toggle("on-light", isLight);
           }
@@ -29,7 +30,7 @@ export function Header() {
     );
     document.querySelectorAll("[data-bg]").forEach((el) => observer.observe(el));
     return () => {
-      window.removeEventListener("scroll", onScroll);
+      top?.disconnect();
       observer.disconnect();
     };
   }, []);
@@ -52,9 +53,8 @@ export function Header() {
     >
       <a
         href="#top"
-        aria-label="Dev Agarwalla — Home"
+        aria-label="Dev Agarwalla, back to top"
         style={{ pointerEvents: "auto" }}
-        data-cursor="hover"
       >
         <span
           style={{
@@ -69,7 +69,7 @@ export function Header() {
             fontFamily: "var(--font-thunder-lc)",
             fontWeight: 900,
             fontSize: 22,
-            letterSpacing: "-0.04em",
+            letterSpacing: "0.02em",
           }}
         >
           DA
@@ -82,7 +82,6 @@ export function Header() {
         aria-expanded={open}
         aria-label={open ? "Close menu" : "Open menu"}
         onClick={() => menuStore.toggle()}
-        data-cursor="hover"
         className="menu-toggle"
         style={{
           pointerEvents: "auto",

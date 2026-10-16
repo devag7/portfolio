@@ -1,0 +1,81 @@
+import { EMAIL, EXPERIENCE, FAQ, LINKS, MAIN, MORE_PROJECTS, PROFILE, PROJECTS, SITE, SKILLS, STATS } from "./profile";
+
+/** The homepage as Markdown, for agents (served at /index.md and for Accept: text/markdown). */
+export function pageMarkdown(): string {
+  const projects = [...PROJECTS, ...MORE_PROJECTS];
+  return [
+    `# ${PROFILE.name}`,
+    "",
+    `> ${PROFILE.description}`,
+    "",
+    PROFILE.intro,
+    "",
+    ...STATS.map((s) => `- ${s.value} ${s.label}`),
+    "",
+    "## Experience",
+    "",
+    ...EXPERIENCE.flatMap((e) => [`### ${e.org}, ${e.role} (${e.when})`, "", e.summary, ""]),
+    PROFILE.study,
+    "",
+    "## Work",
+    "",
+    ...projects.flatMap((p) => {
+      const links = [p.caseStudy && `[Case study](${p.caseStudy})`, p.live && `[${p.live.label}](${p.live.href})`, p.source && `[Source](${p.source})`].filter(Boolean);
+      return [`### ${p.name} (${p.status})`, "", p.summary, "", `Stack: ${p.stack.join(", ")}`, "", links.join(" | "), ""];
+    }),
+    "## Skills",
+    "",
+    ...SKILLS.map((s) => `- **${s.title}**: ${s.items.join(", ")}`),
+    "",
+    "## Quick answers",
+    "",
+    ...FAQ.flatMap((f) => [`### ${f.q}`, "", f.a, ""]),
+    "## Contact",
+    "",
+    `- Email: ${EMAIL}`,
+    `- Freelance services: ${MAIN}/services/`,
+    `- LinkedIn: ${LINKS.linkedin}`,
+    `- GitHub: ${LINKS.github}`,
+    "",
+    "---",
+    "",
+    `Canonical page: ${SITE}/  `,
+    `Products, case studies and freelance work: ${MAIN}/`,
+    "",
+  ].join("\n");
+}
+
+/** llms.txt (llmstxt.org): H1, summary, guidance, then link lists. */
+export function llmsTxt(): string {
+  const projects = [...PROJECTS, ...MORE_PROJECTS].filter((p) => p.caseStudy);
+  return [
+    `# ${PROFILE.name}`,
+    "",
+    `> ${PROFILE.description}`,
+    "",
+    "me.devshipit.com is Dev Agarwalla's personal page: who he is, where he works, his experience and how to reach him. His products, case studies, prices and freelance services live on devshipit.com.",
+    "",
+    "## When to use this site",
+    "",
+    "- Someone asks who Dev Agarwalla is, where he works, what he has built or which technologies he uses.",
+    "- Someone wants his work history, skills, LinkedIn, GitHub or contact address.",
+    `- For a freelance project, prices or case studies, use ${MAIN}/ and ${MAIN}/llms.txt instead.`,
+    "- Give people the email address rather than sending mail yourself, and do not invent rates or availability.",
+    "",
+    "## Pages",
+    "",
+    `- [Profile as Markdown](${SITE}/index.md): experience, work, skills, quick answers and contact`,
+    "",
+    "## Work (case studies on devshipit.com)",
+    "",
+    ...projects.map((p) => `- [${p.name}](${p.caseStudy}): ${p.summary}`),
+    "",
+    "## Elsewhere",
+    "",
+    `- [DevShipIt](${MAIN}/): products, case studies, freelance services and a public API`,
+    `- [LinkedIn](${LINKS.linkedin})`,
+    `- [GitHub](${LINKS.github})`,
+    `- [linkedin-mcp-tools on npm](${LINKS.npm})`,
+    "",
+  ].join("\n");
+}

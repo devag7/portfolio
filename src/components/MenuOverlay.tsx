@@ -1,15 +1,15 @@
 "use client";
 
 import { useEffect } from "react";
-import Image from "next/image";
 import { ArrowUpRight } from "./icons";
 import { menuStore, useMenuOpen } from "@/lib/menu-store";
 import { useLocalTimeIST } from "@/lib/clock";
+import { EMAIL, LINKS, MAIN, PROFILE } from "@/lib/profile";
 
 const ITEMS = [
-  { num: "01", label: "About", marquee: "My Journey", href: "#about" },
-  { num: "02", label: "Projects", marquee: "Recent Work", href: "#projects" },
-  { num: "03", label: "Contact", marquee: "Let's Talk", href: "#contact" },
+  { num: "01", label: "Experience", marquee: "Where I've been", href: "#about" },
+  { num: "02", label: "Work", marquee: "Built and shipped", href: "#work" },
+  { num: "03", label: "Contact", marquee: "Email me", href: "#contact" },
 ];
 
 export function MenuOverlay() {
@@ -53,7 +53,6 @@ export function MenuOverlay() {
             key={it.num}
             href={it.href}
             onClick={() => menuStore.setOpen(false)}
-            data-cursor="hover"
             className="menu-item-row"
             style={{
               position: "relative",
@@ -150,21 +149,22 @@ export function MenuOverlay() {
         }}
       >
         <p style={{ margin: 0, maxWidth: 320, lineHeight: 1.55 }}>
-          Bengaluru-based full-stack developer focused on building reliable web applications across MERN, Next.js, and TypeScript.
+          {PROFILE.intro}
         </p>
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <Image src="/images/other/Planet.svg" width={120} height={120} alt="" aria-hidden="true" />
+        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          <a href={MAIN} style={{ textDecoration: "underline", textUnderlineOffset: 4 }}>devshipit.com</a>
+          <span>Products, case studies and freelance services</span>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-          <a href="mailto:devagarwalla2016@gmail.com" style={{ textDecoration: "underline", textUnderlineOffset: 4 }}>devagarwalla2016@gmail.com</a>
+          <a href={`mailto:${EMAIL}`} style={{ textDecoration: "underline", textUnderlineOffset: 4 }}>{EMAIL}</a>
           <span>Bengaluru, India</span>
-          <span>Local time – {time}</span>
+          <span>Local time {time} IST</span>
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 6, alignItems: "flex-end", textAlign: "right" }}>
-          <a href="https://github.com/devag7" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline", textUnderlineOffset: 4 }}>github</a>
-          <a href="https://linkedin.com/in/devagarwalla" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline", textUnderlineOffset: 4 }}>linkedin</a>
-          <a href="https://x.com/DevAgarwalla" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline", textUnderlineOffset: 4 }}>twitter</a>
-          <span style={{ marginTop: 12, opacity: 0.6 }}>©2026 All Rights Reserved</span>
+          <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline", textUnderlineOffset: 4 }}>LinkedIn</a>
+          <a href={LINKS.github} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline", textUnderlineOffset: 4 }}>GitHub</a>
+          <a href={LINKS.x} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline", textUnderlineOffset: 4 }}>X</a>
+          <span style={{ marginTop: 12, opacity: 0.7 }}>&copy; 2026 Dev Agarwalla</span>
         </div>
       </div>
 
