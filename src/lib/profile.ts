@@ -47,7 +47,7 @@ export const EXPERIENCE: Role[] = [
     when: "Sep 2026 to now",
     year: "2026",
     summary:
-      "Joined as an intern and moved to full-time within two months. I work on Fleet Intelligence, an AI layer over ships' planned maintenance systems: requirements with maritime experts, product specs, MVP scope and integration with the systems customers already run.",
+      "Joined as an intern and moved to full-time within two months. I turn operations workflows into product specs, user stories and MVP scope for an AI product, and plan how it integrates with the systems customers already run.",
   },
   {
     org: "Cyber Secure India",
@@ -149,14 +149,26 @@ export const SKILLS = [
 export const FAQ = [
   {
     q: "Who is Dev Agarwalla?",
-    a: "A full-stack and applied AI engineer in Bengaluru. He is a Technical Delivery Associate at Falcon Reality, builds products such as JantaHR and linkedin-mcp, and takes freelance web development work as DevShipIt.",
+    a: "Dev Agarwalla is a full-stack and applied AI engineer based in Bengaluru, India. He is a Technical Delivery Associate at Falcon Reality, builds his own products such as JantaHR and linkedin-mcp, and takes freelance web development work through DevShipIt.",
   },
   {
-    q: "Does Dev take freelance projects?",
-    a: "Yes, websites and web apps for property agents, agencies and small businesses, through DevShipIt. Every project is priced by a written quote before work starts.",
+    q: "What has Dev Agarwalla built?",
+    a: "JantaHR, HR and payroll software for Indian companies; linkedin-mcp, a 36-tool LinkedIn integration for AI assistants published on npm as linkedin-mcp-tools; RentWise, a rental platform for Bangalore; and ISP Evidence, an Android app that documents internet outages.",
   },
   {
-    q: "How do I contact Dev?",
+    q: "Does Dev Agarwalla take freelance projects?",
+    a: "Yes. Websites and web apps for property agents, agencies and small businesses, through DevShipIt. Every project is priced by a written quote before work starts.",
+  },
+  {
+    q: "Where can I find Dev Agarwalla online?",
+    a: "His personal site is me.devshipit.com and his work is at devshipit.com. He is devag7 on GitHub and devagarwalla on LinkedIn.",
+  },
+  {
+    q: "How do I contact Dev Agarwalla?",
     a: `Email ${EMAIL}. Replies come within 2 working days, usually sooner.`,
   },
 ];
+
+/** Profiles that belong to Dev. Rendered as rel="me" links and as schema.org sameAs. */
+export const IDENTITY = [LINKS.github, LINKS.linkedin, LINKS.x, LINKS.npm, `${MAIN}/`];
+

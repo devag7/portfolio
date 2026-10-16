@@ -1,4 +1,4 @@
-import { EXPERIENCE, FAQ, LINKS, MAIN, PERSON_ID, PROFILE, PROJECTS, MORE_PROJECTS, SITE, EMAIL } from "./profile";
+import { EXPERIENCE, FAQ, IDENTITY, MAIN, PERSON_ID, PROFILE, PROJECTS, MORE_PROJECTS, SITE, EMAIL } from "./profile";
 
 /** schema.org graph for the homepage: ProfilePage about one Person, shared with devshipit.com by @id. */
 export function structuredData() {
@@ -30,6 +30,7 @@ export function structuredData() {
         "@type": "Person",
         "@id": PERSON_ID,
         name: PROFILE.name,
+        alternateName: ["devag7", "DevAgarwalla", "Dev Agarwalla (DevShipIt)"],
         givenName: "Dev",
         familyName: "Agarwalla",
         url: `${SITE}/`,
@@ -43,7 +44,9 @@ export function structuredData() {
         knowsAbout: ["Full-stack development", "Applied AI", "Model Context Protocol", "Next.js", "NestJS", "PostgreSQL", "MongoDB", "MERN stack", "TypeScript", "Technical delivery"],
         hasOccupation: EXPERIENCE.slice(0, 1).map((e) => ({ "@type": "Occupation", name: e.role, occupationLocation: { "@type": "City", name: "Bengaluru" } })),
         brand: { "@type": "Brand", name: "DevShipIt", url: `${MAIN}/` },
-        sameAs: [LINKS.linkedin, LINKS.github, LINKS.x, LINKS.npm, `${MAIN}/about/`],
+        sameAs: [...IDENTITY, `${MAIN}/about/`],
+        mainEntityOfPage: `${SITE}/`,
+        nationality: { "@type": "Country", name: "India" },
         subjectOf: projects.filter((p) => p.caseStudy).map((p) => ({ "@type": "CreativeWork", name: `${p.name} case study`, url: p.caseStudy })),
       },
       {

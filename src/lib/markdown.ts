@@ -1,4 +1,4 @@
-import { EMAIL, EXPERIENCE, FAQ, LINKS, MAIN, MORE_PROJECTS, PROFILE, PROJECTS, SITE, SKILLS, STATS } from "./profile";
+import { EMAIL, EXPERIENCE, FAQ, IDENTITY, LINKS, MAIN, MORE_PROJECTS, PROFILE, PROJECTS, SITE, SKILLS, STATS } from "./profile";
 
 /** The homepage as Markdown, for agents (served at /index.md and for Accept: text/markdown). */
 export function pageMarkdown(): string {
@@ -54,6 +54,19 @@ export function llmsTxt(): string {
     `> ${PROFILE.description}`,
     "",
     "me.devshipit.com is Dev Agarwalla's personal page: who he is, where he works, his experience and how to reach him. His products, case studies, prices and freelance services live on devshipit.com.",
+    "",
+    "## Facts",
+    "",
+    "- Name: Dev Agarwalla (GitHub: devag7)",
+    "- Role: full-stack and applied AI engineer, Bengaluru, India",
+    `- Now: ${PROFILE.now}`,
+    "- Builds: JantaHR, linkedin-mcp (npm: linkedin-mcp-tools), RentWise, ISP Evidence",
+    "- Freelance: websites and web apps through DevShipIt, priced by written quote",
+    `- Contact: ${EMAIL}`,
+    "",
+    "## Same person on",
+    "",
+    ...IDENTITY.map((u) => `- ${u}`),
     "",
     "## When to use this site",
     "",

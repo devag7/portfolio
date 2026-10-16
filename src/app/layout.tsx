@@ -4,7 +4,7 @@ import "./globals.css";
 import { LenisProvider } from "@/components/LenisProvider";
 import { Header } from "@/components/Header";
 import { MenuOverlay } from "@/components/MenuOverlay";
-import { PROFILE, SITE } from "@/lib/profile";
+import { IDENTITY, PROFILE, SITE } from "@/lib/profile";
 import { structuredData } from "@/lib/structured-data";
 
 // Only the weights the page uses: Thunder 800 and 900 for display, Nohemi 300 to 600 for text.
@@ -77,6 +77,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en-IN" className={`lenis ${thunderLC.variable} ${nohemi.variable}`}>
       <head>
         <link rel="alternate" type="text/markdown" href="/index.md" title="This page as Markdown" />
+        {IDENTITY.map((href) => <link key={href} rel="me" href={href} />)}
         <noscript>
           <style>{`.reveal, .reveal-line > * { opacity: 1 !important; transform: none !important; }`}</style>
         </noscript>
