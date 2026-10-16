@@ -13,7 +13,7 @@ export function structuredData() {
         name: PROFILE.title,
         description: PROFILE.description,
         inLanguage: "en-IN",
-        dateModified: "2026-10-16",
+        dateModified: "2026-10-16T12:00:00+05:30",
         mainEntity: { "@id": PERSON_ID },
         isPartOf: { "@id": `${SITE}/#site` },
       },
