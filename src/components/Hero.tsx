@@ -19,7 +19,7 @@ export function Hero() {
       <h1 className="hero-headline">
         <span className="hero-mask">
           <span className="hero-line">Dev Agarwalla</span>
-        </span>
+        </span>{" "}
         <span className="hero-mask hero-mask--right">
           <span className="hero-line hero-line--late">
             <span className="hero-accent">
