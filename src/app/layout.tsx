@@ -7,40 +7,22 @@ import { MenuOverlay } from "@/components/MenuOverlay";
 import { PROFILE, SITE } from "@/lib/profile";
 import { structuredData } from "@/lib/structured-data";
 
+// Only the weights the page uses: Thunder 800 and 900 for display, Nohemi 300 to 600 for text.
 const thunderLC = localFont({
   src: [
-    { path: "../../public/fonts/Thunder/Thunder-LightLC.woff2", weight: "300", style: "normal" },
-    { path: "../../public/fonts/Thunder/Thunder-MediumLC.woff2", weight: "500", style: "normal" },
-    { path: "../../public/fonts/Thunder/Thunder-SemiBoldLC.woff2", weight: "600", style: "normal" },
-    { path: "../../public/fonts/Thunder/Thunder-BoldLC.woff2", weight: "700", style: "normal" },
     { path: "../../public/fonts/Thunder/Thunder-ExtraBoldLC.woff2", weight: "800", style: "normal" },
     { path: "../../public/fonts/Thunder/Thunder-BlackLC.woff2", weight: "900", style: "normal" },
-    { path: "../../public/fonts/Thunder/Thunder-BlackLCItalic.woff2", weight: "900", style: "italic" },
   ],
   variable: "--font-thunder-lc",
   display: "swap",
 });
 
-const thunderHC = localFont({
-  src: [
-    { path: "../../public/fonts/Thunder/Thunder-BlackHC.woff2", weight: "900", style: "normal" },
-    { path: "../../public/fonts/Thunder/Thunder-BlackHCItalic.woff2", weight: "900", style: "italic" },
-  ],
-  variable: "--font-thunder-hc",
-  display: "swap",
-});
-
 const nohemi = localFont({
   src: [
-    { path: "../../public/fonts/Nohemi/Nohemi-Thin.woff2", weight: "100", style: "normal" },
-    { path: "../../public/fonts/Nohemi/Nohemi-ExtraLight.woff2", weight: "200", style: "normal" },
     { path: "../../public/fonts/Nohemi/Nohemi-Light.woff2", weight: "300", style: "normal" },
     { path: "../../public/fonts/Nohemi/Nohemi-Regular.woff2", weight: "400", style: "normal" },
     { path: "../../public/fonts/Nohemi/Nohemi-Medium.woff2", weight: "500", style: "normal" },
     { path: "../../public/fonts/Nohemi/Nohemi-SemiBold.woff2", weight: "600", style: "normal" },
-    { path: "../../public/fonts/Nohemi/Nohemi-Bold.woff2", weight: "700", style: "normal" },
-    { path: "../../public/fonts/Nohemi/Nohemi-ExtraBold.woff2", weight: "800", style: "normal" },
-    { path: "../../public/fonts/Nohemi/Nohemi-Black.woff2", weight: "900", style: "normal" },
   ],
   variable: "--font-nohemi",
   display: "swap",
@@ -92,7 +74,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-IN" className={`lenis ${thunderLC.variable} ${thunderHC.variable} ${nohemi.variable}`}>
+    <html lang="en-IN" className={`lenis ${thunderLC.variable} ${nohemi.variable}`}>
       <head>
         <link rel="alternate" type="text/markdown" href="/index.md" title="This page as Markdown" />
         <noscript>

@@ -7,7 +7,9 @@ import { lenisStore } from "@/lib/lenis-store";
 export function LenisProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) return;
+    // Touch screens scroll natively; smooth scrolling there only costs battery and main-thread time.
+    const touch = window.matchMedia("(pointer: coarse)").matches;
+    if (reduced || touch) return;
 
     const lenis = new Lenis({
       lerp: 0.075,

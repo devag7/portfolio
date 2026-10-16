@@ -53,7 +53,7 @@ export function Header() {
     >
       <a
         href="#top"
-        aria-label="Dev Agarwalla, back to top"
+       
         style={{ pointerEvents: "auto" }}
       >
         <span
@@ -74,6 +74,7 @@ export function Header() {
         >
           DA
         </span>
+        <span className="sr-only">: Dev Agarwalla, back to top</span>
       </a>
 
       <button

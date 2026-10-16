@@ -42,7 +42,7 @@ export function ExperienceSection() {
               {r.role} <span aria-hidden="true">/</span> {r.when}
             </Reveal>
             <Reveal as="p" delay={140} className="exp-summary">{r.summary}</Reveal>
-            <span aria-hidden="true" className="exp-year">{r.year}</span>
+            <span aria-hidden="true" className="exp-year" data-year={r.year} />
           </li>
         ))}
       </ol>
