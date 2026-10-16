@@ -164,10 +164,18 @@ export const FAQ = [
     a: "His personal site is me.devshipit.com and his work is at devshipit.com. He is devag7 on GitHub and devagarwalla on LinkedIn.",
   },
   {
+    q: "Is this the same person as Dev Agarwal?",
+    a: "No. Agarwalla is spelled with a double L and a final A. This Dev Agarwalla is the software engineer in Bengaluru who is devag7 on GitHub and builds JantaHR and linkedin-mcp. He is not the cinematographer, the content creator or the other professionals named Dev Agarwal.",
+  },
+  {
     q: "How do I contact Dev Agarwalla?",
     a: `Email ${EMAIL}. Replies come within 2 working days, usually sooner.`,
   },
 ];
+
+/** One line that separates Dev from people with similar names (schema.org disambiguatingDescription, llms.txt). */
+export const DISAMBIGUATION =
+  "Software engineer in Bengaluru, India, known as devag7 on GitHub; builder of JantaHR and linkedin-mcp and founder of DevShipIt. Spelled Agarwalla, not Agarwal.";
 
 /** Profiles that belong to Dev. Rendered as rel="me" links and as schema.org sameAs. */
 export const IDENTITY = [LINKS.github, LINKS.linkedin, LINKS.x, LINKS.npm, `${MAIN}/`];

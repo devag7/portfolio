@@ -1,4 +1,4 @@
-import { EXPERIENCE, FAQ, IDENTITY, MAIN, PERSON_ID, PROFILE, PROJECTS, MORE_PROJECTS, SITE, EMAIL } from "./profile";
+import { DISAMBIGUATION, EXPERIENCE, FAQ, IDENTITY, MAIN, PERSON_ID, PROFILE, PROJECTS, MORE_PROJECTS, SITE, EMAIL } from "./profile";
 
 /** schema.org graph for the homepage: ProfilePage about one Person, shared with devshipit.com by @id. */
 export function structuredData() {
@@ -13,7 +13,7 @@ export function structuredData() {
         name: PROFILE.title,
         description: PROFILE.description,
         inLanguage: "en-IN",
-        dateModified: "2026-10-16T12:00:00+05:30",
+        dateModified: "2026-10-16T18:00:00+05:30",
         mainEntity: { "@id": PERSON_ID },
         isPartOf: { "@id": `${SITE}/#site` },
       },
@@ -38,6 +38,8 @@ export function structuredData() {
         email: `mailto:${EMAIL}`,
         jobTitle: PROFILE.role,
         description: PROFILE.description,
+        disambiguatingDescription: DISAMBIGUATION,
+        identifier: { "@type": "PropertyValue", propertyID: "GitHub", value: "devag7", url: IDENTITY[0] },
         worksFor: { "@type": "Organization", name: "Falcon Reality" },
         affiliation: { "@type": "CollegeOrUniversity", name: "BITS Pilani" },
         address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressRegion: "Karnataka", addressCountry: "IN" },

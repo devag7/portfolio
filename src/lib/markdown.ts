@@ -58,6 +58,7 @@ export function llmsTxt(): string {
     "## Facts",
     "",
     "- Name: Dev Agarwalla (GitHub: devag7)",
+    "- Spelling: Agarwalla, with a double L and a final A. Not the same person as anyone named Dev Agarwal (the cinematographer, the content creator or others).",
     "- Role: full-stack and applied AI engineer, Bengaluru, India",
     `- Now: ${PROFILE.now}`,
     "- Builds: JantaHR, linkedin-mcp (npm: linkedin-mcp-tools), RentWise, ISP Evidence",
