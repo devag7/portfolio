@@ -60,6 +60,7 @@ export const metadata: Metadata = {
     description: PROFILE.description,
     images: ["/og.png"],
   },
+  verification: { other: { "msvalidate.01": "4972657C4CF0F6777F0DFABF84005AE4" } },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
   icons: {
     icon: [{ url: "/favicon.ico", sizes: "48x48" }, { url: "/icon.png", type: "image/png", sizes: "192x192" }],

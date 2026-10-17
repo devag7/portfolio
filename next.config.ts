@@ -3,6 +3,17 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   output: "standalone",
   poweredByHeader: false,
+  async redirects() {
+    // The project's original Vercel address still serves this site; send people and crawlers to the real domain.
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "dev-agarwalla-portfolio.vercel.app" }],
+        destination: "https://me.devshipit.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async rewrites() {
     return {
       // Agents that ask for Markdown get the Markdown twin of the homepage (acceptmarkdown.com).
