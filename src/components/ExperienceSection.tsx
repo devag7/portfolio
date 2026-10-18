@@ -28,7 +28,7 @@ export function ExperienceSection() {
           <span className="exp-head-indent">been building</span>
         </h2>
         <p className="exp-lead">
-          Now: {PROFILE.now}, an AI product company. Before that, production MERN work, developer communities and AI training data.
+          Now: {PROFILE.now}. Before that, production MERN work, developer communities and AI training data.
         </p>
       </div>
 

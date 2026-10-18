@@ -7,7 +7,7 @@ export const SITE = "https://me.devshipit.com";
 export const MAIN = "https://devshipit.com";
 export const PERSON_ID = `${SITE}/#person`;
 export const EMAIL = "hello@devshipit.com";
-export const RESUME = "https://drive.google.com/file/d/1axco4cIV7plhH2A35AKtyDA_95_Avs8R/view?usp=sharing";
+export const AEOLEDGER = "https://aeoledger.com";
 
 export const LINKS = {
   github: "https://github.com/devag7",
@@ -15,18 +15,19 @@ export const LINKS = {
   x: "https://x.com/DevAgarwalla",
   npm: "https://www.npmjs.com/package/linkedin-mcp-tools",
   devshipit: MAIN,
+  aeoledger: `${AEOLEDGER}/`,
 };
 
 export const PROFILE = {
   name: "Dev Agarwalla",
-  role: "Full-stack and applied AI engineer",
+  role: "Founder, AEOLedger",
   location: "Bengaluru, India",
-  now: "Technical Delivery Associate at Falcon Reality",
-  title: "Dev Agarwalla | Full-stack and applied AI engineer in Bengaluru",
+  now: "Founder of AEOLedger, an answer engine optimization (AEO) agency for B2B SaaS",
+  title: "Dev Agarwalla | Founder, AEOLedger (answer engine optimization for B2B SaaS)",
   description:
-    "Dev Agarwalla is a full-stack and applied AI engineer in Bengaluru. Technical Delivery at Falcon Reality, builder of JantaHR and linkedin-mcp, and the developer behind DevShipIt.",
+    "Dev Agarwalla is the founder of AEOLedger, an answer engine optimization (AEO) agency for B2B SaaS, and a full-stack and applied AI engineer in Bengaluru. Builder of JantaHR and linkedin-mcp, and the developer behind DevShipIt.",
   intro:
-    "Full-stack and applied AI engineer in Bengaluru. I work on technical delivery at Falcon Reality and ship my own products as DevShipIt.",
+    "Founder of AEOLedger: answer engine optimization (AEO) for B2B SaaS. I'm a full-stack and applied AI engineer in Bengaluru, and I ship my own products as DevShipIt.",
   study: "Studying for an MSc in Data Science and AI at BITS Pilani.",
 };
 
@@ -39,15 +40,15 @@ export const STATS = [
 
 export type Role = { org: string; role: string; when: string; year: string; summary: string };
 
-/** Most recent first. From LinkedIn, October 2026. */
+/** Most recent first. October 2026. */
 export const EXPERIENCE: Role[] = [
   {
-    org: "Falcon Reality",
-    role: "Technical Delivery Associate",
-    when: "Sep 2026 to now",
+    org: "AEOLedger",
+    role: "Founder",
+    when: "Oct 2026 to now",
     year: "2026",
     summary:
-      "Joined as an intern and moved to full-time within two months. I turn operations workflows into product specs, user stories and MVP scope for an AI product, and plan how it integrates with the systems customers already run.",
+      "An answer engine optimization (AEO) agency for B2B SaaS, at aeoledger.com. I measure how often ChatGPT, Claude, Perplexity and Gemini name a company for real buyer questions, then fix why they don't: crawler access, rendering, structured data and the pages they cite.",
   },
   {
     org: "Cyber Secure India",
@@ -149,7 +150,11 @@ export const SKILLS = [
 export const FAQ = [
   {
     q: "Who is Dev Agarwalla?",
-    a: "Dev Agarwalla is a full-stack and applied AI engineer based in Bengaluru, India. He is a Technical Delivery Associate at Falcon Reality, builds his own products such as JantaHR and linkedin-mcp, and takes freelance web development work through DevShipIt.",
+    a: "Dev Agarwalla is the founder of AEOLedger, an answer engine optimization (AEO) agency for B2B SaaS, and a full-stack and applied AI engineer based in Bengaluru, India. He builds his own products such as JantaHR and linkedin-mcp, and takes freelance web development work through DevShipIt.",
+  },
+  {
+    q: "What is AEOLedger?",
+    a: "AEOLedger (aeoledger.com) is an answer engine optimization (AEO) agency for B2B SaaS, founded by Dev Agarwalla in 2026. It measures how often AI assistants such as ChatGPT, Claude, Perplexity and Gemini name a company for real buyer questions, then fixes the technical and content reasons they don't.",
   },
   {
     q: "What has Dev Agarwalla built?",
@@ -161,11 +166,11 @@ export const FAQ = [
   },
   {
     q: "Where can I find Dev Agarwalla online?",
-    a: "His personal site is me.devshipit.com and his work is at devshipit.com. He is devag7 on GitHub and devagarwalla on LinkedIn.",
+    a: "His personal site is me.devshipit.com, his agency is aeoledger.com and his products are at devshipit.com. He is devag7 on GitHub and devagarwalla on LinkedIn.",
   },
   {
     q: "Is this the same person as Dev Agarwal?",
-    a: "No. Agarwalla is spelled with a double L and a final A. This Dev Agarwalla is the software engineer in Bengaluru who is devag7 on GitHub and builds JantaHR and linkedin-mcp. He is not the cinematographer, the content creator or the other professionals named Dev Agarwal.",
+    a: "No. Agarwalla is spelled with a double L and a final A. This Dev Agarwalla is the software engineer in Bengaluru who is devag7 on GitHub and founded AEOLedger. He is not the cinematographer, the content creator or the other professionals named Dev Agarwal.",
   },
   {
     q: "How do I contact Dev Agarwalla?",
@@ -175,8 +180,8 @@ export const FAQ = [
 
 /** One line that separates Dev from people with similar names (schema.org disambiguatingDescription, llms.txt). */
 export const DISAMBIGUATION =
-  "Software engineer in Bengaluru, India, known as devag7 on GitHub; builder of JantaHR and linkedin-mcp and founder of DevShipIt. Spelled Agarwalla, not Agarwal.";
+  "Software engineer in Bengaluru, India, known as devag7 on GitHub; founder of AEOLedger (answer engine optimization) and DevShipIt, builder of JantaHR and linkedin-mcp. Spelled Agarwalla, not Agarwal.";
 
 /** Profiles that belong to Dev. Rendered as rel="me" links and as schema.org sameAs. */
-export const IDENTITY = [LINKS.github, LINKS.linkedin, LINKS.x, LINKS.npm, `${MAIN}/`];
+export const IDENTITY = [LINKS.github, LINKS.linkedin, LINKS.x, LINKS.npm, `${MAIN}/`, `${AEOLEDGER}/about/`];
 

@@ -1,6 +1,6 @@
 import { WavesCanvas } from "./WavesCanvas";
 import { ArrowUpRight } from "./icons";
-import { PROFILE, RESUME, STATS } from "@/lib/profile";
+import { AEOLEDGER, PROFILE, STATS } from "@/lib/profile";
 
 /** Server-rendered hero: the name is the H1 and every number is in the HTML, so crawlers and agents read real values. */
 export function Hero() {
@@ -36,8 +36,8 @@ export function Hero() {
           <a href="#work" className="pill pill--sage">
             See my work <ArrowUpRight />
           </a>
-          <a href={RESUME} target="_blank" rel="noopener noreferrer" className="arrow-link hero-resume">
-            Résumé <ArrowUpRight />
+          <a href={`${AEOLEDGER}/`} className="arrow-link hero-resume">
+            AEOLedger <ArrowUpRight />
           </a>
         </div>
       </div>

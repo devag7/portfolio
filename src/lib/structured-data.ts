@@ -1,4 +1,4 @@
-import { DISAMBIGUATION, EXPERIENCE, FAQ, IDENTITY, MAIN, PERSON_ID, PROFILE, PROJECTS, MORE_PROJECTS, SITE, EMAIL } from "./profile";
+import { AEOLEDGER, DISAMBIGUATION, EXPERIENCE, FAQ, IDENTITY, MAIN, PERSON_ID, PROFILE, PROJECTS, MORE_PROJECTS, SITE, EMAIL } from "./profile";
 
 /** schema.org graph for the homepage: ProfilePage about one Person, shared with devshipit.com by @id. */
 export function structuredData() {
@@ -13,7 +13,7 @@ export function structuredData() {
         name: PROFILE.title,
         description: PROFILE.description,
         inLanguage: "en-IN",
-        dateModified: "2026-10-16T18:00:00+05:30",
+        dateModified: "2026-10-18T18:00:00+05:30",
         mainEntity: { "@id": PERSON_ID },
         isPartOf: { "@id": `${SITE}/#site` },
       },
@@ -40,10 +40,10 @@ export function structuredData() {
         description: PROFILE.description,
         disambiguatingDescription: DISAMBIGUATION,
         identifier: { "@type": "PropertyValue", propertyID: "GitHub", value: "devag7", url: IDENTITY[0] },
-        worksFor: { "@type": "Organization", name: "Falcon Reality" },
+        worksFor: { "@type": "Organization", "@id": `${AEOLEDGER}/#org`, name: "AEOLedger", url: `${AEOLEDGER}/` },
         affiliation: { "@type": "CollegeOrUniversity", name: "BITS Pilani" },
         address: { "@type": "PostalAddress", addressLocality: "Bengaluru", addressRegion: "Karnataka", addressCountry: "IN" },
-        knowsAbout: ["Full-stack development", "Applied AI", "Model Context Protocol", "Next.js", "NestJS", "PostgreSQL", "MongoDB", "MERN stack", "TypeScript", "Technical delivery"],
+        knowsAbout: ["Answer engine optimization (AEO)", "Full-stack development", "Applied AI", "Model Context Protocol", "Next.js", "NestJS", "PostgreSQL", "MongoDB", "MERN stack", "TypeScript", "Technical delivery"],
         hasOccupation: EXPERIENCE.slice(0, 1).map((e) => ({ "@type": "Occupation", name: e.role, occupationLocation: { "@type": "City", name: "Bengaluru" } })),
         brand: { "@type": "Brand", name: "DevShipIt", url: `${MAIN}/` },
         sameAs: [...IDENTITY, `${MAIN}/about/`],

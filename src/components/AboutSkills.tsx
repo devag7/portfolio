@@ -14,7 +14,7 @@ export function AboutSkills() {
             <strong>I care about the parts users feel:</strong> the API that answers fast, the form that handles bad input, the screen that still makes sense when the data is messy.
           </p>
           <p>
-            Most of my work sits between product and engineering. At Falcon Reality that means turning operations workflows into specs and MVP scope. On my own products it means building them end to end, from the database to the interface.
+            Most of my work sits between product and engineering. At AEOLedger that means measuring how AI assistants describe a company, then fixing the code and pages behind it. On my own products it means building them end to end, from the database to the interface.
           </p>
           <p className="skills-study">{PROFILE.study}</p>
         </div>
